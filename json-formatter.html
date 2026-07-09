@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON 格式化工具 - 在线美化、压缩、验证 JSON</title>
+  <meta name="description" content="免费的在线 JSON 格式化工具，支持 JSON 美化、压缩、语法验证，帮助开发者快速处理 JSON 数据。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">🔧 在线工具箱</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="json-formatter.html" class="active">JSON 格式化</a></li>
+        <li><a href="base64-tool.html">Base64 工具</a></li>
+        <li><a href="qr-generator.html">二维码生成</a></li>
+        <li><a href="about.html">关于我们</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="page-header">
+      <h1>JSON 格式化工具</h1>
+      <p>美化、压缩、验证 JSON 数据，支持语法高亮</p>
+    </section>
+
+    <div class="tool-layout">
+      <div class="tool-main">
+        <div class="form-group">
+          <label>输入 JSON 数据</label>
+          <textarea id="jsonInput" placeholder='{"name": "示例", "value": 123}'></textarea>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="formatJSON()">📋 格式化（美化）</button>
+          <button class="btn btn-secondary" onclick="compressJSON()">🗜️ 压缩</button>
+          <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
+          <button class="btn btn-secondary" onclick="copyResult()">📋 复制结果</button>
+        </div>
+
+        <div class="form-group">
+          <label>处理结果</label>
+          <div id="jsonResult" class="result-box">结果将显示在这里...</div>
+        </div>
+      </div>
+
+      <aside class="tool-sidebar">
+        <div class="ads-container ads-sidebar">
+          广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
+        </div>
+        <div class="ads-container ads-sidebar">
+          广告位预留
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>在线工具箱 - 免费实用的在线工具集合</p>
+      <div class="footer-links">
+        <a href="about.html">关于我们</a>
+        <a href="privacy.html">隐私政策</a>
+        <a href="index.html">网站首页</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function formatJSON() {
+      const input = document.getElementById('jsonInput').value.trim();
+      const resultBox = document.getElementById('jsonResult');
+      if (!input) {
+        resultBox.textContent = '请输入 JSON 数据';
+        return;
+      }
+      try {
+        const obj = JSON.parse(input);
+        resultBox.textContent = JSON.stringify(obj, null, 2);
+      } catch (e) {
+        resultBox.textContent = '❌ JSON 格式错误：' + e.message;
+      }
+    }
+
+    function compressJSON() {
+      const input = document.getElementById('jsonInput').value.trim();
+      const resultBox = document.getElementById('jsonResult');
+      if (!input) {
+        resultBox.textContent = '请输入 JSON 数据';
+        return;
+      }
+      try {
+        const obj = JSON.parse(input);
+        resultBox.textContent = JSON.stringify(obj);
+      } catch (e) {
+        resultBox.textContent = '❌ JSON 格式错误：' + e.message;
+      }
+    }
+
+    function clearAll() {
+      document.getElementById('jsonInput').value = '';
+      document.getElementById('jsonResult').textContent = '结果将显示在这里...';
+    }
+
+    function copyResult() {
+      const result = document.getElementById('jsonResult').textContent;
+      if (result === '结果将显示在这里...') return;
+      navigator.clipboard.writeText(result).then(() => {
+        alert('已复制到剪贴板');
+      });
+    }
+  </script>
+</body>
+</html>
