@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1960589035364427"
+       crossorigin="anonymous"></script>
+  <title>URL 编码解码工具 - 在线 URL 转义转换</title>
+  <meta name="description" content="免费的在线 URL 编码和解码工具，支持中文 URL 编码转换，快速处理网址参数和特殊字符。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">🔧 在线工具箱</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="json-formatter.html">JSON</a></li>
+        <li><a href="base64-tool.html">Base64</a></li>
+        <li><a href="qr-generator.html">二维码</a></li>
+        <li><a href="url-encoder.html" class="active">URL 编码</a></li>
+        <li><a href="password-generator.html">密码</a></li>
+        <li><a href="timestamp-converter.html">时间戳</a></li>
+        <li><a href="word-counter.html">字数</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="page-header">
+      <h1>URL 编码解码工具</h1>
+      <p>在线 URL 编码（encode）和解码（decode）转换</p>
+    </section>
+
+    <div class="tool-layout">
+      <div class="tool-main">
+        <div class="form-group">
+          <label>输入内容</label>
+          <textarea id="urlInput" placeholder="输入网址或文本..."></textarea>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="encodeURL()">🔗 URL 编码</button>
+          <button class="btn btn-primary" onclick="decodeURL()">🔓 URL 解码</button>
+          <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
+          <button class="btn btn-secondary" onclick="copyResult()">📋 复制结果</button>
+        </div>
+
+        <div class="form-group">
+          <label>转换结果</label>
+          <div id="urlResult" class="result-box">结果将显示在这里...</div>
+        </div>
+
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">什么是 URL 编码？</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">URL 编码（也叫百分号编码）是一种用于将特殊字符转换为可以在 URL 中安全传输的格式的编码方式。例如，中文字符、空格、& 符号等都需要经过 URL 编码才能正确传输。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">常见的 URL 编码示例：空格变为 %20，中文字符变为 %xx%xx 的形式。URL 解码则是将这些编码后的字符还原回原始内容。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;">本工具支持完整的 URL 编码和解码操作，包括 Unicode 字符的处理。所有操作均在浏览器本地完成，您的数据不会上传到服务器。</p>
+        </div>
+      </div>
+
+      <aside class="tool-sidebar">
+        <div class="ads-container ads-sidebar">广告位预留</div>
+        <div class="ads-container ads-sidebar">广告位预留</div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>在线工具箱 - 免费实用的在线工具集合</p>
+      <div class="footer-links">
+        <a href="about.html">关于我们</a>
+        <a href="privacy.html">隐私政策</a>
+        <a href="index.html">网站首页</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function encodeURL() {
+      const input = document.getElementById('urlInput').value;
+      const resultBox = document.getElementById('urlResult');
+      if (!input) {
+        resultBox.textContent = '请输入要编码的内容';
+        return;
+      }
+      resultBox.textContent = encodeURIComponent(input);
+    }
+
+    function decodeURL() {
+      const input = document.getElementById('urlInput').value.trim();
+      const resultBox = document.getElementById('urlResult');
+      if (!input) {
+        resultBox.textContent = '请输入要解码的内容';
+        return;
+      }
+      try {
+        resultBox.textContent = decodeURIComponent(input);
+      } catch (e) {
+        resultBox.textContent = '❌ 解码失败：无效的 URL 编码字符串';
+      }
+    }
+
+    function clearAll() {
+      document.getElementById('urlInput').value = '';
+      document.getElementById('urlResult').textContent = '结果将显示在这里...';
+    }
+
+    function copyResult() {
+      const result = document.getElementById('urlResult').textContent;
+      if (result === '结果将显示在这里...') return;
+      navigator.clipboard.writeText(result).then(() => { alert('已复制到剪贴板'); });
+    }
+  </script>
+</body>
+</html>

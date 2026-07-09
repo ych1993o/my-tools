@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1960589035364427"
+       crossorigin="anonymous"></script>
+  <title>时间戳转换器 - 在线 Unix 时间戳与日期转换</title>
+  <meta name="description" content="免费的在线 Unix 时间戳转换工具，支持时间戳转日期、日期转时间戳，自动识别秒和毫秒格式。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">🔧 在线工具箱</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="json-formatter.html">JSON</a></li>
+        <li><a href="base64-tool.html">Base64</a></li>
+        <li><a href="qr-generator.html">二维码</a></li>
+        <li><a href="url-encoder.html">URL 编码</a></li>
+        <li><a href="password-generator.html">密码</a></li>
+        <li><a href="timestamp-converter.html" class="active">时间戳</a></li>
+        <li><a href="word-counter.html">字数</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="page-header">
+      <h1>Unix 时间戳转换器</h1>
+      <p>时间戳与日期时间互相转换，自动识别秒和毫秒</p>
+    </section>
+
+    <div class="tool-layout">
+      <div class="tool-main">
+        <div class="form-group">
+          <label>Unix 时间戳（秒或毫秒）</label>
+          <input type="text" id="timestampInput" placeholder="例如：1700000000 或 1700000000000" style="min-height:auto;">
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="timestampToDate()">📅 转日期时间</button>
+          <button class="btn btn-primary" onclick="getCurrentTimestamp()">⏰ 获取当前时间戳</button>
+          <button class="btn btn-secondary" onclick="clearTimestamp()">🗑️ 清空</button>
+        </div>
+
+        <div class="form-group">
+          <label>转换结果</label>
+          <div id="timestampResult" class="result-box">结果将显示在这里...</div>
+        </div>
+
+        <div class="form-group" style="margin-top:24px;">
+          <label>日期时间 → 时间戳</label>
+          <input type="text" id="dateInput" placeholder="格式：2024-01-01 12:00:00" style="min-height:auto;margin-bottom:10px;">
+          <button class="btn btn-primary" onclick="dateToTimestamp()">🔄 转时间戳</button>
+          <div id="dateResult" class="result-box" style="margin-top:10px;">结果将显示在这里...</div>
+        </div>
+
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">什么是 Unix 时间戳？</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">Unix 时间戳（Unix Timestamp）是从 1970 年 1 月 1 日 00:00:00 UTC 开始所经过的秒数。它是计算机系统中广泛使用的标准时间表示方式，在编程、数据库和系统日志中非常常见。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">时间戳有两种常见格式：秒级（10 位数字）和毫秒级（13 位数字）。本工具会自动识别您输入的是哪种格式，并给出对应的日期时间结果。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;">开发者在使用 API 接口、处理日志文件或调试程序时，经常需要在时间戳和人类可读的日期格式之间进行转换。本工具可以帮助您快速完成这些操作。</p>
+        </div>
+      </div>
+
+      <aside class="tool-sidebar">
+        <div class="ads-container ads-sidebar">广告位预留</div>
+        <div class="ads-container ads-sidebar">广告位预留</div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>在线工具箱 - 免费实用的在线工具集合</p>
+      <div class="footer-links">
+        <a href="about.html">关于我们</a>
+        <a href="privacy.html">隐私政策</a>
+        <a href="index.html">网站首页</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function timestampToDate() {
+      const input = document.getElementById('timestampInput').value.trim();
+      const resultBox = document.getElementById('timestampResult');
+      if (!input) {
+        resultBox.textContent = '请输入时间戳';
+        return;
+      }
+      let ts = parseInt(input);
+      if (isNaN(ts)) {
+        resultBox.textContent = '❌ 请输入有效的时间戳数字';
+        return;
+      }
+      if (input.length > 11) ts = Math.floor(ts / 1000);
+      const date = new Date(ts * 1000);
+      if (isNaN(date.getTime())) {
+        resultBox.textContent = '❌ 无效的时间戳';
+        return;
+      }
+      resultBox.textContent = date.toLocaleString('zh-CN', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false
+      }) + '\n\n北京时间：' + date.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', hour12: false });
+    }
+
+    function getCurrentTimestamp() {
+      const now = Date.now();
+      const resultBox = document.getElementById('timestampResult');
+      resultBox.textContent = '毫秒时间戳：' + now + '\n秒时间戳：' + Math.floor(now / 1000) + '\n\n' + new Date().toLocaleString('zh-CN', { hour12: false });
+    }
+
+    function dateToTimestamp() {
+      const input = document.getElementById('dateInput').value.trim();
+      const resultBox = document.getElementById('dateResult');
+      if (!input) {
+        resultBox.textContent = '请输入日期时间';
+        return;
+      }
+      const date = new Date(input.replace(/-/g, '/'));
+      if (isNaN(date.getTime())) {
+        resultBox.textContent = '❌ 无法解析日期格式，请使用：2024-01-01 12:00:00';
+        return;
+      }
+      resultBox.textContent = '秒时间戳：' + Math.floor(date.getTime() / 1000) + '\n毫秒时间戳：' + date.getTime();
+    }
+
+    function clearTimestamp() {
+      document.getElementById('timestampInput').value = '';
+      document.getElementById('timestampResult').textContent = '结果将显示在这里...';
+    }
+  </script>
+</body>
+</html>
