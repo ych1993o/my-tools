@@ -1,1 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="在线工具箱技术指南，分享 JSON、Base64、二维码、URL 编码、密码生成、时间戳转换、字数统计等工具的使用技巧与原理详解。">
+  <meta name="keywords" content="技术指南,在线工具箱,JSON,Base64,二维码,URL编码,密码生成,时间戳,字数统计">
+  <title>技术指南 - 在线工具箱</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">🔧 在线工具箱</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">工具</a></li>
+        <li><a href="index.html" class="active">技术指南</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <header class="blog-header">
+    <div class="container">
+      <h1>技术指南</h1>
+      <p>深入讲解每个工具背后的技术原理与实际应用</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="blog-intro">
+      <p>欢迎来到在线工具箱的技术博客。在这里，我们不仅提供好用的在线工具，还会深入讲解每个工具背后的技术原理、常见问题的排查方法，以及在实际开发中的应用场景。无论你是前端开发者、后端工程师，还是日常需要处理数据的普通用户，都能在这里找到有用的内容。</p>
+    </section>
+
+    <section class="blog-list">
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <h2 class="blog-card-title">
+            <a href="json-guide.html">JSON 数据格式详解与常见错误排查指南</a>
+          </h2>
+          <div class="blog-card-meta">
+            <time datetime="2026-07-14">2026-07-14</time>
+            <span class="blog-card-author">工具箱团队</span>
+            <span class="blog-card-tag">JSON</span>
+          </div>
+          <p class="blog-card-desc">深入解析 JSON 数据格式的语法规则、数据类型，列举开发中常见的尾逗号、单引号、注释、编码等错误及其排查方法，并对比 JSON 与 XML 的差异，附带 API 应用实例与 FAQ。</p>
+          <a href="json-guide.html" class="blog-card-link">阅读全文 →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <h2 class="blog-card-title">
+            <a href="base64-guide.html">Base64 编码原理与实际应用场景全解析</a>
+          </h2>
+          <div class="blog-card-meta">
+            <time datetime="2026-07-14">2026-07-14</time>
+            <span class="blog-card-author">工具箱团队</span>
+            <span class="blog-card-tag">Base64</span>
+          </div>
+          <p class="blog-card-desc">从二进制到文本的转换讲起，剖析 Base64 的编码原理与字符集映射规则，介绍在图片内联、邮件附件、数据 URL、JWT 等场景中的实际应用，并讨论编码体积膨胀的取舍。</p>
+          <a href="base64-guide.html" class="blog-card-link">阅读全文 →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <h2 class="blog-card-title">
+            <a href="qr-code-guide.html">二维码生成原理与设计美学指南</a>
+          </h2>
+          <div class="blog-card-meta">
+            <time datetime="2026-07-14">2026-07-14</time>
+            <span class="blog-card-author">工具箱团队</span>
+            <span class="blog-card-tag">二维码</span>
+          </div>
+          <p class="blog-card-desc">揭秘二维码背后的 Reed-Solomon 纠错算法与定位图形机制，讲解版本、容错等级、数据容量之间的关系，并分享如何在保证可扫描的前提下做出美观的二维码设计。</p>
+          <a href="qr-code-guide.html" class="blog-card-link">阅读全文 →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <h2 class="blog-card-title">
+            <a href="url-encoding-guide.html">URL 编码解码完全指南：从百分号编码到安全传输</a>
+          </h2>
+          <div class="blog-card-meta">
+            <time datetime="2026-07-14">2026-07-14</time>
+            <span class="blog-card-author">工具箱团队</span>
+            <span class="blog-card-tag">URL 编码</span>
+          </div>
+          <p class="blog-card-desc">讲解为什么 URL 中需要百分号编码，reserved 字符与 unreserved 字符的区别，对比 encodeURI 与 encodeURIComponent 的使用场景，并分析中文 URL 编码在 SEO 中的影响。</p>
+          <a href="url-encoding-guide.html" class="blog-card-link">阅读全文 →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <h2 class="blog-card-title">
+            <a href="password-security-guide.html">如何生成高强度安全密码：密码学实践指南</a>
+          </h2>
+          <div class="blog-card-meta">
+            <time datetime="2026-07-14">2026-07-14</time>
+            <span class="blog-card-author">工具箱团队</span>
+            <span class="blog-card-tag">密码</span>
+          </div>
+          <p class="blog-card-desc">从熵的角度理解密码强度，分析长度与字符集对破解时间的影响，对比随机密码与口令短语的优劣，并介绍密码管理器、双因素认证等提升账号安全的最佳实践。</p>
+          <a href="password-security-guide.html" class="blog-card-link">阅读全文 →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <h2 class="blog-card-title">
+            <a href="timestamp-guide.html">Unix 时间戳转换详解：从纪元到时区处理</a>
+          </h2>
+          <div class="blog-card-meta">
+            <time datetime="2026-07-14">2026-07-14</time>
+            <span class="blog-card-author">工具箱团队</span>
+            <span class="blog-card-tag">时间戳</span>
+          </div>
+          <p class="blog-card-desc">解释 Unix 时间戳的定义与 2038 年问题，讲解 UTC、本地时间、时区偏移的转换方法，对比秒级与毫秒级时间戳的使用场景，并给出各主流编程语言的转换代码示例。</p>
+          <a href="timestamp-guide.html" class="blog-card-link">阅读全文 →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <h2 class="blog-card-title">
+            <a href="word-count-guide.html">中文字数统计的正确方法：字符、字数与篇幅的差异</a>
+          </h2>
+          <div class="blog-card-meta">
+            <time datetime="2026-07-14">2026-07-14</time>
+            <span class="blog-card-author">工具箱团队</span>
+            <span class="blog-card-tag">字数</span>
+          </div>
+          <p class="blog-card-desc">辨析字符数、字数、词数、行数等不同统计口径的含义，讲解中文与英文在计数上的差异，介绍写作平台、出版机构、学术论文的字数标准，并分享高效排版与查重的技巧。</p>
+          <a href="word-count-guide.html" class="blog-card-link">阅读全文 →</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>🔧 在线工具箱</h3>
+          <p>免费、好用、无需安装的在线工具集合，助力你的日常开发与数据处理。</p>
+        </div>
+        <div class="footer-section">
+          <h4>工具导航</h4>
+          <ul>
+            <li><a href="../json-formatter.html">JSON 格式化</a></li>
+            <li><a href="../base64-tool.html">Base64 编解码</a></li>
+            <li><a href="../qr-generator.html">二维码生成</a></li>
+            <li><a href="../url-encoder.html">URL 编码解码</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>更多工具</h4>
+          <ul>
+            <li><a href="../password-generator.html">密码生成器</a></li>
+            <li><a href="../timestamp-converter.html">时间戳转换</a></li>
+            <li><a href="../word-counter.html">字数统计</a></li>
+            <li><a href="index.html">技术指南</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 <a href="https://qiushanzoudaokou.top">qiushanzoudaokou.top</a> 在线工具箱 · 托管于 GitHub Pages</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
