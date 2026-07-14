@@ -43,24 +43,15 @@
   </style>
 </head>
 <body>
-
 <nav class="navbar">
   <div class="nav-container">
     <a href="../index.html" class="logo">🔧 在线工具箱</a>
     <ul class="nav-links">
-      <li><a href="../index.html">首页</a></li>
-      <li><a href="../json-formatter.html">JSON</a></li>
-      <li><a href="../base64-tool.html">Base64</a></li>
-      <li><a href="../qr-generator.html">二维码</a></li>
-      <li><a href="../url-encoder.html">URL 编码</a></li>
-      <li><a href="../password-generator.html">密码</a></li>
-      <li><a href="../timestamp-converter.html">时间戳</a></li>
-      <li><a href="../word-counter.html">字数</a></li>
-      <li><a href="index.html" class="active">博客</a></li>
+      <li><a href="../index.html">工具</a></li>
+      <li><a href="index.html" class="active">技术指南</a></li>
     </ul>
   </div>
 </nav>
-
 <div class="article-wrap">
   <article>
     <header class="article-header">
@@ -71,13 +62,10 @@
         <span>分类：二维码技术</span>
       </div>
     </header>
-
     <p>二维码已经渗透到我们生活的方方面面：扫码支付、添加好友、连 Wi-Fi、打开网页……但这个黑白方块背后究竟藏着怎样的技术原理？为什么有些二维码被划花了还能扫出来，而有些稍微脏一点就识别失败？本文将系统讲解二维码的发展历史、结构组成、版本与容量、容错率选择，以及如何生成高质量二维码。</p>
-
     <h2>一、二维码的发展历史和基本概念</h2>
     <p>二维码中最常见的是 QR Code（Quick Response Code，快速响应码），由日本丰田旗下的电装公司（Denso Wave）于 1994 年发明，最初用于在汽车制造流水线上追踪零部件。相比一维条码（如商品上的 EAN 码），QR 码能在更小的面积内容纳多得多的数据，并且支持快速全向读取，因此很快走出工厂、进入大众生活。</p>
     <p>所谓「二维」，是指信息在横向和纵向两个方向上同时被编码。一维条码只在水平方向记录数据，垂直方向只是条高的冗余；而二维二维码在横纵两个维度都承载信息，因此数据密度大幅提升，还内置了纠错机制，具备很强的抗损能力。</p>
-
     <h2>二、QR 码的结构组成</h2>
     <p>一个标准的 QR 码由若干功能区域拼合而成，每个区域各司其职：</p>
     <ul>
@@ -88,11 +76,9 @@
       <li><strong>数据区与纠错区</strong>：真正承载编码数据与 Reed-Solomon 纠错码的区域，以黑白模块表示 0/1 比特。</li>
       <li><strong>静区（Quiet Zone）</strong>：码图四周留出的空白边框，帮助扫描器把二维码从背景中分离出来，通常至少 4 个模块宽。</li>
     </ul>
-
     <h2>三、版本与容量：Version 1-40</h2>
     <p>QR 码共有 40 个版本（Version 1 到 Version 40）。版本号越高，模块数越多、容量越大。模块数计算公式为：<code>21 + (版本号 - 1) × 4</code>。例如 Version 1 是 21×21 模块，Version 40 则是 177×177 模块。</p>
     <p>下表列出几个典型版本的容量参考（数字模式、最高纠错等级会减少可用容量）：</p>
-
     <table class="qr-table">
       <tr><th>版本</th><th>模块尺寸</th><th>数字容量（约）</th><th>说明</th></tr>
       <tr><td>Version 1</td><td>21 × 21</td><td>约 17 个字符</td><td>最常见的小型二维码</td></tr>
@@ -101,14 +87,11 @@
       <tr><td>Version 20</td><td>97 × 97</td><td>约 1027 个字符</td><td>大容量，适合长内容</td></tr>
       <tr><td>Version 40</td><td>177 × 177</td><td>约 7089 个字符</td><td>最大容量，极少使用</td></tr>
     </table>
-
     <div class="note">
       <p style="margin:0;">容量还受<strong>数据模式</strong>影响：纯数字模式最省空间，字母数字模式次之，字节模式（含中文）最占空间。所以同样内容，用纯数字写能做出更小的码。</p>
     </div>
-
     <h2>四、容错率四个级别及选择建议</h2>
     <p>QR 码内置了基于 Reed-Solomon 算法的纠错能力，即使部分模块污损或缺失也能还原数据。容错率分为四个级别，级别越高，可容忍的损坏比例越大，但也会占用更多空间来存放冗余纠错码：</p>
-
     <div class="ec-grid">
       <div class="ec-card">
         <div class="lvl">L</div>
@@ -131,9 +114,7 @@
         <div class="desc">最高容错，适合工业、户外或需嵌 Logo 的场景。</div>
       </div>
     </div>
-
     <p><strong>选择建议</strong>：如果二维码只出现在屏幕上、环境干净，用 L 或 M 即可，码更小巧；如果要印在海报、包装、易磨损的实体上，或在中间放 Logo，建议选 Q 或 H，以保证被划伤、沾污后仍可识别。需要特别注意的是，30% 是理论上限，实际能容忍的损坏还取决于损坏位置——损坏发生在定位点附近远比发生在数据区危险。</p>
-
     <h2>五、二维码的应用场景</h2>
     <ul>
       <li><strong>移动支付</strong>：微信、支付宝的收款码与付款码，本质是包含支付标识、金额、商户信息的二维码，扫一下即可完成交易。</li>
@@ -142,7 +123,6 @@
       <li><strong>网址跳转</strong>：把链接编码成二维码，印在海报、产品包装、宣传册上，用户扫码直达落地页，是线下引流到线上的核心方式。</li>
       <li><strong>票据与防伪</strong>：电影票、登机牌、电子优惠券常以二维码作为凭证，结合加密签名还能用于防伪溯源。</li>
     </ul>
-
     <h2>六、如何生成高质量二维码</h2>
     <p>一个「扫得快、扫得准」的二维码，需要在尺寸、颜色、留白等方面都符合规范：</p>
     <ul>
@@ -153,13 +133,11 @@
       <li><strong>控制内容长度</strong>：内容越短，模块越少、码越紧凑、越易识别。长链接建议先转短链接再生成二维码。</li>
       <li><strong>居中 Logo 要克制</strong>：如要在中间放 Logo，务必选 H 级容错，且 Logo 面积不超过整体的 30%，以免覆盖过多数据。</li>
     </ul>
-
     <div class="cta">
       <h3>立即生成你的专属二维码</h3>
       <p style="margin:0;">支持网址、文本、Wi-Fi、名片等多种类型，可选 L/M/Q/H 容错率与自定义颜色，免费下载高清图片。</p>
       <a href="../qr-generator.html">前往二维码生成工具 →</a>
     </div>
-
     <h2>七、如何使用我们的二维码生成工具</h2>
     <ol>
       <li>打开 <a href="../qr-generator.html">在线二维码生成工具</a> 页面。</li>
@@ -169,7 +147,6 @@
       <li>可选自定义前景色、背景色与尺寸，实时预览效果。</li>
       <li>点击「生成」，满意后下载 PNG 图片即可直接使用。</li>
     </ol>
-
     <h2>八、常见问题 FAQ</h2>
     <div class="faq">
       <details>
@@ -193,16 +170,12 @@
         <p>理论上 Version 40 在数字模式下可编码约 7089 个字符，但模块会非常密集、极难扫描。实际应用中建议尽量精简内容，短网址是最佳实践。</p>
       </details>
     </div>
-
     <p style="margin-top:32px;color:#6b7280;">二维码看似简单，背后却融合了编码理论、纠错算法和图像识别等多项技术。掌握版本、容错率与生成规范，你就能做出既美观又可靠的二维码。如需立即生成，欢迎使用我们的 <a href="../qr-generator.html">在线二维码生成工具</a>。</p>
-
   </article>
 </div>
-
 <footer class="site-footer">
   <p>© 2026 在线工具箱 qiushanzoudaokou.top · 提供免费在线开发工具</p>
   <p><a href="../index.html">返回首页</a> · <a href="index.html">博客首页</a></p>
 </footer>
-
 </body>
 </html>

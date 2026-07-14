@@ -38,24 +38,15 @@
   </style>
 </head>
 <body>
-
 <nav class="navbar">
   <div class="nav-container">
     <a href="../index.html" class="logo">🔧 在线工具箱</a>
     <ul class="nav-links">
-      <li><a href="../index.html">首页</a></li>
-      <li><a href="../json-formatter.html">JSON</a></li>
-      <li><a href="../base64-tool.html">Base64</a></li>
-      <li><a href="../qr-generator.html">二维码</a></li>
-      <li><a href="../url-encoder.html">URL 编码</a></li>
-      <li><a href="../password-generator.html">密码</a></li>
-      <li><a href="../timestamp-converter.html">时间戳</a></li>
-      <li><a href="../word-counter.html">字数</a></li>
-      <li><a href="index.html" class="active">博客</a></li>
+      <li><a href="../index.html">工具</a></li>
+      <li><a href="index.html" class="active">技术指南</a></li>
     </ul>
   </div>
 </nav>
-
 <div class="article-wrap">
   <article>
     <header class="article-header">
@@ -66,14 +57,11 @@
         <span>分类：编码技术</span>
       </div>
     </header>
-
     <p>Base64 是日常开发中出现频率极高的一种编码方式，但许多初学者对它的本质存在误解——有人把它当成加密手段，有人搞不清它到底解决了什么问题。本文将从最基础的概念讲起，带你彻底搞懂 Base64 的编码原理、填充机制、对照表，以及在邮件附件、Data URI、API 认证、JWT 等场景中的真实用途。</p>
-
     <h2>一、Base64 是什么，为什么需要它</h2>
     <p>Base64 是一种基于 64 个可打印字符来表示二进制数据的编码方法。它本身不是用来压缩数据的，也不是用来加密的，它的核心目的是<strong>把任意二进制字节流转换成纯文本</strong>，从而让二进制数据能够安全地通过「只认文本」的通道进行传输。</p>
     <p>早期的互联网协议（如 SMTP 邮件传输协议、部分 HTTP 头部）在设计时只考虑了 ASCII 文本，对其中某些控制字符（比如 0x00、0x0D、0x0A 等）非常敏感。如果把图片、音频、加密后的密文这类原始二进制数据直接塞进这些通道，字节流很可能被错误地解释、截断或篡改。Base64 正是为了解决这个「二进制不能直接放进文本通道」的问题而诞生的。</p>
     <p>经过 Base64 编码后，输出结果只包含 <code>A-Z</code>、<code>a-z</code>、<code>0-9</code>、<code>+</code>、<code>/</code> 这 64 个字符（以及作为填充的 <code>=</code>），全部是可安全打印的 ASCII 字符，可以被任何文本协议原样搬运。</p>
-
     <h2>二、编码原理详解：6 位分组与填充机制</h2>
     <p>理解 Base64 的关键在于「位分组」。计算机中的原始数据以字节（byte）为单位，1 个字节 = 8 个比特（bit）。而 Base64 使用的字符表有 64 个字符，恰好可以用 6 个比特（2<sup>6</sup> = 64）来表示一个字符。于是 Base64 做了这样的转换：</p>
     <ul>
@@ -88,10 +76,8 @@
       <li>如果正好 3 的倍数：无需填充，没有 <code>=</code>。</li>
     </ul>
     <p>所以你在 Base64 结果末尾看到的 <code>=</code> 或 <code>==</code>，正是为了让解码端准确还原原始字节数而加上的「占位符」。</p>
-
     <h2>三、Base64 编码对照表说明</h2>
     <p>Base64 的 64 个字符是固定顺序的标准表（RFC 4648）。前 26 个是 大写字母 A-Z（对应 0-25），接着 26 个小写字母 a-z（26-51），然后数字 0-9（52-61），最后是 <code>+</code>（62）和 <code>/</code>（63）。下面截取一部分示意：</p>
-
     <table class="b64-table">
       <tr><th>数值</th><th>字符</th><th>数值</th><th>字符</th><th>数值</th><th>字符</th></tr>
       <tr><td>0</td><td>A</td><td>26</td><td>a</td><td>52</td><td>0</td></tr>
@@ -100,37 +86,27 @@
       <tr><td>—</td><td>—</td><td>—</td><td>—</td><td>62</td><td>+</td></tr>
       <tr><td>—</td><td>—</td><td>—</td><td>—</td><td>63</td><td>/</td></tr>
     </table>
-
     <p>需要注意的是，<code>+</code> 和 <code>/</code> 在 URL 中有特殊含义，因此在 URL 安全场景下会改用 <code>-</code> 和 <code>_</code>，并通常去掉 <code>=</code>，这就是所谓的 URL safe Base64。</p>
-
     <h2>四、实际使用场景</h2>
-
     <h3>1. 邮件附件（MIME）</h3>
     <p>SMTP 协议只能传输 ASCII 文本，因此当你给邮件添加图片、PDF 等附件时，邮件客户端会用 Base64 把附件编码成文本，嵌入到 MIME 数据中。这也是 Base64 最初被广泛使用的场景。</p>
-
     <h3>2. Data URI（内嵌资源）</h3>
     <p>在前端开发中，小图标可以直接以 <code>data:image/png;base64,xxxx</code> 的形式写进 CSS 或 HTML，省去一次额外的 HTTP 请求。这种方式适合体积较小的资源，能减少请求数、简化部署。</p>
-
     <h3>3. HTTP Basic 认证（API 认证）</h3>
     <p>HTTP Basic Auth 会在请求头中携带 <code>Authorization: Basic &lt;base64&gt;</code>，其中 base64 部分就是 <code>用户名:密码</code> 的 Base64 编码。这里用 Base64 同样不是为了安全，而是为了让包含冒号的凭据能够放进 HTTP 头部这一文本通道。</p>
-
     <h3>4. JWT（JSON Web Token）</h3>
     <p>JWT 由 Header、Payload、Signature 三部分组成，每部分都用 Base64URL 编码后用 <code>.</code> 拼接。它让令牌可以放在 URL、Cookie 或 Header 中安全传输，而不会因为特殊字符导致解析问题。</p>
-
     <h2>五、重要提醒：Base64 不是加密！</h2>
     <div class="warn">
       <p style="margin:0;">Base64 是<strong>公开、可逆</strong>的编码算法，任何人拿到编码结果都能立即还原出原始内容，它没有任何密钥、没有任何保密性。千万不要用它来「保护」密码、敏感配置或隐私数据。真正的数据保护应该使用 AES、RSA 等加密算法，密码则应使用 bcrypt、argon2 等单向哈希。</p>
     </div>
-
     <h2>六、编码后体积为什么会增大约 33%</h2>
     <p>从原理就能算出来：每 3 个字节被编码成 4 个字符，数据量从 3 变成 4，膨胀比例是 4/3 ≈ 1.333，也就是约 <strong>33%</strong>。再加上可能的换行符（MIME 规范每 76 字符换行）和末尾的 <code>=</code> 填充，最终体积会略大于原文。所以 Base64 是用「空间换兼容性」，并不适合用在大体积文件的传输优化上。</p>
-
     <div class="cta">
       <h3>立即体验在线 Base64 工具</h3>
       <p style="margin:0;">无需安装、即开即用，支持文本与文件的双向编码解码，还提供 URL Safe 模式。</p>
       <a href="../base64-tool.html">前往 Base64 工具 →</a>
     </div>
-
     <h2>七、如何使用我们的 Base64 工具</h2>
     <ol>
       <li>打开 <a href="../base64-tool.html">Base64 在线工具</a> 页面。</li>
@@ -139,7 +115,6 @@
       <li>如需用于 URL，勾选「URL Safe」选项，自动替换 <code>+/-</code> 与去掉 <code>=</code>。</li>
       <li>结果区会实时显示转换后的内容，点击「复制」即可一键取用。</li>
     </ol>
-
     <h2>八、常见问题 FAQ</h2>
     <div class="faq">
       <details>
@@ -163,16 +138,12 @@
         <p>Base64 编码的是「字节」，而中文先要按某种字符编码（UTF-8、GBK 等）转成字节才能编码。编码与解码两端使用了不同的字符编码，就会出现乱码。建议统一使用 UTF-8。</p>
       </details>
     </div>
-
     <p style="margin-top:32px;color:#6b7280;">Base64 虽然原理简单，却是互联网基础设施中不可或缺的一环。理解了它的「把二进制变成安全文本」这一核心目的，你就能在各种实际场景中正确地使用它。如果你在日常开发中遇到编码问题，欢迎随时使用我们的 <a href="../base64-tool.html">在线 Base64 工具</a>。</p>
-
   </article>
 </div>
-
 <footer class="site-footer">
   <p>© 2026 在线工具箱 qiushanzoudaokou.top · 提供免费在线开发工具</p>
   <p><a href="../index.html">返回首页</a> · <a href="index.html">博客首页</a></p>
 </footer>
-
 </body>
 </html>
