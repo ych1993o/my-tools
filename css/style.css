@@ -360,7 +360,17 @@ textarea {
 
 @media (max-width: 600px) {
   .nav-links {
-    display: none;
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .logo {
+    font-size: 16px;
   }
 
   .page-header {
