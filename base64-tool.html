@@ -47,8 +47,24 @@
           <label>转换结果</label>
           <div id="base64Result" class="result-box">结果将显示在这里...</div>
         </div>
-      </div>
 
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">什么是 Base64 编码？</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">Base64 是一种将二进制数据转换为 ASCII 字符串的编码方式，常用于在文本协议中安全地传输二进制数据。它将每 3 个字节（24 位）的数据转换为 4 个 ASCII 字符，编码后的数据体积会增大约 33%。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">Base64 在实际开发中有广泛的应用场景：电子邮件附件的 MIME 编码、HTML/CSS 中的小图片内嵌（Data URI）、API 接口中的认证信息传递（Basic Auth）、JWT Token 的载荷部分等。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">本工具支持包含中文字符的 Base64 编码和解码，采用 UTF-8 编码处理，能够正确转换中文、日文、韩文等 Unicode 字符。这是很多在线工具不支持的功能。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">常见使用场景</h3>
+          <ul style="color:#475569;font-size:14px;line-height:1.8;padding-left:20px;">
+            <li>解码 API 响应中的 Base64 编码数据</li>
+            <li>生成 HTML 中内嵌图片的 Data URI</li>
+            <li>查看或修改 JWT Token 中的内容</li>
+            <li>处理配置文件中的 Base64 编码字符串</li>
+            <li>调试网络请求中编码的参数</li>
+          </ul>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-top:10px;">所有编解码操作均在浏览器本地完成，您的数据不会发送到任何服务器。</p>
+        </div>
+      </div>
       <aside class="tool-sidebar">
         <div class="ads-container ads-sidebar">
           广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
@@ -66,6 +82,7 @@
       <div class="footer-links">
         <a href="about.html">关于我们</a>
         <a href="privacy.html">隐私政策</a>
+        <a href="terms.html">服务条款</a>
         <a href="index.html">网站首页</a>
       </div>
     </div>
