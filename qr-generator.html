@@ -5,10 +5,199 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1960589035364427"
        crossorigin="anonymous"></script>
-  <title>二维码生成器 - 免费在线生成高清二维码</title>
-  <meta name="description" content="免费的在线二维码生成工具，输入文本或网址即可即时生成高清二维码图片，支持下载保存到本地。">
+  <title>二维码生成器 - 二维码原理、类型与在线生成指南</title>
+  <meta name="description" content="二维码在线生成工具与完整教程。详解二维码原理、纠错等级、类型对比、实际应用场景，支持生成高清可下载的二维码图片。">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    .article-layout {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .article-layout p,
+    .article-layout li {
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .article-layout h1 {
+      font-size: 26px;
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .article-layout .article-meta {
+      color: #94a3b8;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .article-layout h2 {
+      color: #1e293b;
+      font-size: 18px;
+      margin: 32px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .article-layout h3 {
+      color: #1e293b;
+      font-size: 16px;
+      margin: 24px 0 10px;
+    }
+    .article-layout ul,
+    .article-layout ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    .article-layout li {
+      margin-bottom: 6px;
+    }
+    .article-layout code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #334155;
+    }
+    .article-layout pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .article-layout pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+    .article-layout table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .article-layout th,
+    .article-layout td {
+      border: 1px solid #e2e8f0;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .article-layout th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 600;
+    }
+    .tool-embedded {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 28px 0;
+    }
+    .tool-embedded .tool-title {
+      font-size: 18px;
+      color: #1e293b;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .tool-embedded .form-group {
+      margin-bottom: 16px;
+    }
+    .tool-embedded .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #334155;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .tool-embedded textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .tool-embedded textarea:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+    .tool-embedded .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tool-embedded .btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tool-embedded .btn-primary {
+      background: #3b82f6;
+      color: #fff;
+    }
+    .tool-embedded .btn-primary:hover {
+      background: #2563eb;
+    }
+    .tool-embedded .btn-secondary {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .tool-embedded .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+    .tool-embedded .result-box {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    .page-sidebar-wrapper {
+      display: flex;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    .page-sidebar-wrapper .article-layout {
+      padding: 30px 0 0;
+      flex: 1;
+    }
+    .page-sidebar-wrapper .tool-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      padding-top: 30px;
+    }
+    @media (max-width: 768px) {
+      .page-sidebar-wrapper {
+        flex-direction: column;
+      }
+      .page-sidebar-wrapper .tool-sidebar {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -24,65 +213,144 @@
     </div>
   </nav>
 
-  <main class="container">
-    <section class="page-header">
-      <h1>二维码生成器</h1>
-      <p>输入文本或网址，即时生成高清二维码图片</p>
-    </section>
+  <div class="page-sidebar-wrapper">
+    <div class="article-layout">
+      <h1>二维码生成器 - 二维码原理、类型与在线生成指南</h1>
+      <div class="article-meta">在线工具箱 · 更新于 2025 年</div>
 
-    <div class="tool-layout">
-      <div class="tool-main">
+      <p>二维码（QR Code，全称 Quick Response Code）是一种广泛应用于现代生活中的二维条码技术，由日本电装公司（Denso Wave）的工程师原昌宏于 1994 年发明。最初它被设计用于汽车制造业的零部件追踪，因为传统的条形码信息容量有限，无法满足工业生产的需求。QR Code 能够存储多达 7089 个纯数字字符或 4296 个字母数字字符，远超一维条码的 20 个字符左右。这种大容量特性使其迅速从工业领域走向大众生活。如今，二维码已经融入支付、营销、社交、物流等各个场景，成为信息传递不可或缺的桥梁。</p>
+
+      <!-- 嵌入工具 -->
+      <div class="tool-embedded">
+        <div class="tool-title">在线二维码生成器</div>
         <div class="form-group">
           <label>输入内容（文本、网址等）</label>
           <textarea id="qrInput" placeholder="输入要生成二维码的内容，例如：https://www.example.com"></textarea>
         </div>
-
         <div class="btn-group">
-          <button class="btn btn-primary" onclick="generateQR()">📱 生成二维码</button>
-          <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
-          <button class="btn btn-secondary" onclick="downloadQR()" id="downloadBtn" style="display:none;">💾 下载图片</button>
+          <button class="btn btn-primary" onclick="generateQR()">生成二维码</button>
+          <button class="btn btn-secondary" onclick="clearAll()">清空</button>
+          <button class="btn btn-secondary" onclick="downloadQR()" id="downloadBtn" style="display:none;">下载图片</button>
         </div>
-
         <div class="form-group">
           <label>生成的二维码</label>
           <div id="qrResult" class="result-box" style="display:flex;align-items:center;justify-content:center;min-height:250px;">
             二维码将显示在这里...
           </div>
         </div>
-
-        <div style="margin-top:30px;">
-          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">什么是二维码？</h2>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">二维码（QR Code）是一种二维条码，由日本 Denso Wave 公司于 1994 年发明。它可以存储网址、文本、联系方式、Wi-Fi 配置等多种类型的信息，通过手机摄像头或扫码器即可快速读取。相比传统的一维条码，二维码的信息容量更大、读取速度更快。</p>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">如今二维码已广泛应用于支付、营销、社交、物流等各个领域。无论是分享网站链接、创建电子名片，还是生成 Wi-Fi 连接码，二维码都提供了便捷的信息传递方式。</p>
-
-          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">常见使用场景</h3>
-          <ul style="color:#475569;font-size:14px;line-height:1.8;padding-left:20px;">
-            <li>将网站 URL 生成二维码，方便手机快速访问</li>
-            <li>生成包含联系信息的 vCard 二维码（电子名片）</li>
-            <li>创建 Wi-Fi 二维码，访客扫码即可连接网络</li>
-            <li>在印刷品（名片、海报、传单）上放置产品链接</li>
-            <li>生成支付链接或活动报名页面的二维码</li>
-          </ul>
-
-          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">使用方法</h3>
-          <ol style="color:#475569;font-size:14px;line-height:1.8;padding-left:20px;">
-            <li>在输入框中输入要编码的内容（网址、文本等）</li>
-            <li>点击"生成二维码"按钮</li>
-            <li>二维码生成后，点击"下载图片"保存到本地</li>
-          </ol>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-top:10px;">本工具使用 M 级纠错，即使二维码被部分遮挡也能正常识别。所有操作在浏览器本地完成，不会上传您的数据。</p>
-        </div>
       </div>
-      <aside class="tool-sidebar">
-        <div class="ads-container ads-sidebar">
-          广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
-        </div>
-        <div class="ads-container ads-sidebar">
-          广告位预留
-        </div>
-      </aside>
+
+      <!-- 继续文章 -->
+      <h2>二维码的工作原理</h2>
+      <p>二维码的识别过程并不复杂，但其内部编码机制非常精密。一个完整的 QR Code 由以下几个核心部分组成：</p>
+      <ul>
+        <li><strong>定位图案（Position Detection Pattern）</strong>：二维码三个角上的正方形定位点，帮助扫描器快速定位二维码的位置和方向，无论从哪个角度扫描都能正确识别。</li>
+        <li><strong>定时图案（Timing Pattern）</strong>：连接定位点之间的黑白交替线条，用于确定模块的坐标，确保扫描时即使图像略有倾斜也能准确读取数据。</li>
+        <li><strong>数据编码区域</strong>：二维码的主体部分，存储实际编码的数据信息。根据数据类型的不同，会采用数字模式、字母数字模式、字节模式或汉字模式等不同的编码方式以提高效率。</li>
+        <li><strong>纠错码（Error Correction Code）</strong>：基于 Reed-Solomon 算法生成的冗余数据。即使二维码被部分遮挡、污染或损坏，扫描器仍然可以通过纠错码恢复原始数据。这是二维码比一维码更加可靠的关键原因。</li>
+        <li><strong>格式与版本信息</strong>：记录二维码的版本号（决定尺寸）和纠错等级等元数据，供解码器参考。</li>
+      </ul>
+
+      <h2>二维码的纠错等级</h2>
+      <p>QR Code 定义了四个纠错等级，等级越高，纠错能力越强，但可存储的有效数据量会相应减少。选择合适的纠错等级需要根据具体的使用场景来权衡。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>纠错等级</th>
+            <th>纠错能力</th>
+            <th>数据恢复率</th>
+            <th>适用场景</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>L（Low）</strong></td>
+            <td>约 7%</td>
+            <td>最多可恢复 7% 的数据</td>
+            <td>数据量大、展示环境干净的场景（如网页、电子文档）</td>
+          </tr>
+          <tr>
+            <td><strong>M（Medium）</strong></td>
+            <td>约 15%</td>
+            <td>最多可恢复 15% 的数据</td>
+            <td>通用场景，平衡数据量和容错能力（本工具默认级别）</td>
+          </tr>
+          <tr>
+            <td><strong>Q（Quartile）</strong></td>
+            <td>约 25%</td>
+            <td>最多可恢复 25% 的数据</td>
+            <td>需要叠加 Logo 或可能被部分遮挡的场景</td>
+          </tr>
+          <tr>
+            <td><strong>H（High）</strong></td>
+            <td>约 30%</td>
+            <td>最多可恢复 30% 的数据</td>
+            <td>工业环境、印刷品、可能严重受损的场景</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>在实际应用中，如果你打算在二维码中央放置品牌 Logo，建议至少选择 Q 级或 H 级纠错，因为 Logo 会占据一部分数据区域。对于普通网页展示或电子名片，L 级或 M 级就完全足够了。</p>
+
+      <h2>二维码的常见类型</h2>
+      <p>QR Code 并非只有一种标准，多年来发展出了多个变体以满足不同的应用需求：</p>
+      <ul>
+        <li><strong>Model 1</strong>：最早的 QR Code 版本，由 Denso Wave 在 1994 年发布。它是最原始的规格，目前已逐渐被 Model 2 取代，但在一些旧系统中仍然可以见到。</li>
+        <li><strong>Model 2</strong>：1997 年标准化的版本，也是目前最广泛使用的 QR Code 标准。它在 Model 1 的基础上增加了纠错能力的灵活性，并优化了数据编码效率。我们日常扫描的二维码绝大多数属于 Model 2。</li>
+        <li><strong>Micro QR Code</strong>：QR Code 的缩小版本，最小只有 11×11 个模块（普通 QR Code 最小为 21×21）。适用于空间有限的场景，如电子元器件标记和微型标签。不过 Micro QR 只支持部分纠错等级。</li>
+        <li><strong>iQR Code</strong>：Denso Wave 在 2011 年推出的新一代二维码。它支持矩形（非正方形）形状，可以在更小的空间内编码更多数据，并支持更大的版本（最高 Version 61）。iQR Code 特别适合在电路板、金属零件等工业环境中使用。</li>
+        <li><strong>Frame QR</strong>：允许在二维码中央留出一个空白区域放置图片或文字，是一种兼顾美观和功能的设计变体。</li>
+      </ul>
+
+      <h2>二维码的实际应用</h2>
+      <p>二维码因其便捷性和高信息密度，已经深入到我们生活的方方面面。以下是几个最常见的应用场景：</p>
+      <ul>
+        <li><strong>移动支付</strong>：微信支付、支付宝等平台利用二维码实现快速转账和商户付款，用户只需打开 App 扫一扫即可完成交易，大大简化了支付流程。</li>
+        <li><strong>数字营销</strong>：广告海报、传单、产品包装上印制二维码，引导用户扫码跳转至活动页面、优惠券或产品详情页，是线下引流到线上的重要手段。</li>
+        <li><strong>Wi-Fi 连接</strong>：将 Wi-Fi 的 SSID、密码和加密方式编码为二维码，访客扫码即可自动连接网络，无需手动输入密码，特别适用于咖啡馆、酒店等公共场所。</li>
+        <li><strong>电子名片（vCard）</strong>：将姓名、电话、邮箱、公司等信息按 vCard 格式编码为二维码，对方扫码即可将联系人信息一键保存到手机通讯录。</li>
+        <li><strong>产品追溯</strong>：制造业和农业利用二维码记录产品的生产批次、质检信息、物流轨迹等，消费者扫码可以查看产品的完整生命周期信息。</li>
+        <li><strong>活动签到</strong>：会议、展览、课程等活动通过二维码门票进行签到管理，大幅提高入场效率和准确性，也方便事后统计出席数据。</li>
+      </ul>
+
+      <h2>二维码的设计注意事项</h2>
+      <p>生成一个可以被正常扫描的二维码并不困难，但要确保在各种实际场景中都能可靠识别，需要注意以下几个设计要素：</p>
+      <ul>
+        <li><strong>前景色对比度</strong>：二维码的前景色（通常为黑色）和背景色（通常为白色）之间需要有足够的对比度。建议对比度不低于 4.5:1。深色前景搭配浅色背景效果最好。虽然可以用彩色二维码增强视觉吸引力，但要避免使用浅色系的前景色。</li>
+        <li><strong>大小建议</strong>：二维码的尺寸应根据扫描距离来确定。一般而言，扫描距离每增加 1 厘米，二维码的尺寸需要增大约 0.4 厘米。如果在印刷品上使用，建议二维码不小于 2×2 厘米；在网页中展示则建议不小于 200×200 像素。</li>
+        <li><strong>扫描距离</strong>：远距离扫描（如户外广告牌）需要更大的二维码，近距离扫描（如手机屏幕显示）则可以使用较小的尺寸。设计时需要预估主要的使用场景和扫描距离。</li>
+        <li><strong>容错率选择</strong>：如果二维码可能被部分遮挡、或在恶劣环境下使用，应选择更高的纠错等级（Q 或 H）。如果在二维码中央叠加 Logo，也必须使用较高纠错等级以确保剩余部分的数据仍然可以被正确解码。</li>
+        <li><strong>留白区域</strong>：二维码四周需要保留至少 4 个模块宽度的安静区（Quiet Zone），即纯白区域。这个区域不能有任何文字、图片或边框的干扰，否则会严重影响识别率。</li>
+      </ul>
+
+      <h2>常见问题</h2>
+
+      <h3>二维码能存储多少数据？</h3>
+      <p>QR Code 的最大数据容量取决于版本（Version 1 到 Version 40）和纠错等级。在最高版本（Version 40，177×177 模块）和最低纠错等级（L）下，可以存储最多 7089 个数字字符、4296 个字母数字字符、2953 个字节或 1817 个汉字。不过，版本越高二维码越密集，对打印精度和相机分辨率的要求也越高。在实际应用中，建议将数据量控制在合理范围内，以提高扫描成功率。</p>
+
+      <h3>二维码会过期吗？</h3>
+      <p>二维码本身只是一个编码了数据的图形，不会自动过期。它的有效期取决于它所指向的内容。如果二维码编码的是一个 URL，那么只有当该 URL 对应的网页仍然在线时，扫码才能正常访问。如果 URL 失效或服务器关闭，二维码虽然还能被扫描识别出其中的文本，但无法跳转到有效的页面。静态二维码（直接编码目标数据）不受服务器状态影响，动态二维码（编码一个短链接，由服务器重定向）则依赖短链接服务的持续运营。</p>
+
+      <h3>二维码可以被追踪吗？</h3>
+      <p>静态二维码本身不具备追踪功能，扫描行为不会被记录。但如果使用的是动态二维码（通过短链接服务生成），那么每次扫码都会经过服务器重定向，服务商就可以记录扫描次数、时间、地理位置等信息。因此，如果你重视隐私，使用静态二维码更安全；如果你是营销人员想要了解扫码数据，动态二维码会更有价值。</p>
+
+      <h2>使用方法</h2>
+      <p>使用本工具生成二维码非常简单，只需三个步骤：</p>
+      <ol>
+        <li>在上方工具的输入框中输入要编码的内容，可以输入网址、文本、电话号码或任何你想通过二维码传递的信息。</li>
+        <li>点击"生成二维码"按钮，工具会即时生成一张清晰的二维码图片。</li>
+        <li>生成后点击"下载图片"按钮即可将二维码保存为 PNG 图片文件，方便你在各种场景中使用。</li>
+      </ol>
+      <p>本工具使用 M 级纠错，在保证数据容量的同时提供了良好的容错能力，即使二维码被部分遮挡也能正常识别。所有生成操作均在浏览器本地完成，不会上传您的任何数据，充分保障隐私安全。</p>
     </div>
-  </main>
+    <aside class="tool-sidebar">
+      <div class="ads-container ads-sidebar">
+        广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
+      </div>
+      <div class="ads-container ads-sidebar">
+        广告位预留
+      </div>
+    </aside>
+  </div>
 
   <footer class="footer">
     <div class="footer-content">

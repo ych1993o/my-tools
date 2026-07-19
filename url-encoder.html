@@ -5,9 +5,197 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1960589035364427"
        crossorigin="anonymous"></script>
-  <title>URL 编码解码工具 - 在线 URL 转义转换</title>
-  <meta name="description" content="免费的在线 URL 编码和解码工具，支持中文 URL 编码转换，快速处理网址参数和特殊字符。">
+  <title>URL 编码解码工具 - URL 编码原理与在线转换指南</title>
+  <meta name="description" content="URL 编码解码在线工具与完整教程。详解 URL 编码原理、保留字符与编码字符、编码规则，支持中文 URL 编码转换。">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .article-layout {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .article-layout p,
+    .article-layout li {
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .article-layout h1 {
+      font-size: 26px;
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .article-layout .article-meta {
+      color: #94a3b8;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .article-layout h2 {
+      color: #1e293b;
+      font-size: 18px;
+      margin: 32px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .article-layout h3 {
+      color: #1e293b;
+      font-size: 16px;
+      margin: 24px 0 10px;
+    }
+    .article-layout ul,
+    .article-layout ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    .article-layout li {
+      margin-bottom: 6px;
+    }
+    .article-layout code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #334155;
+    }
+    .article-layout pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .article-layout pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+    .article-layout table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .article-layout th,
+    .article-layout td {
+      border: 1px solid #e2e8f0;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .article-layout th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 600;
+    }
+    .tool-embedded {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 28px 0;
+    }
+    .tool-embedded .tool-title {
+      font-size: 18px;
+      color: #1e293b;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .tool-embedded .form-group {
+      margin-bottom: 16px;
+    }
+    .tool-embedded .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #334155;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .tool-embedded textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .tool-embedded textarea:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+    .tool-embedded .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tool-embedded .btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tool-embedded .btn-primary {
+      background: #3b82f6;
+      color: #fff;
+    }
+    .tool-embedded .btn-primary:hover {
+      background: #2563eb;
+    }
+    .tool-embedded .btn-secondary {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .tool-embedded .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+    .tool-embedded .result-box {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 80px;
+      color: #94a3b8;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .page-sidebar-wrapper {
+      display: flex;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    .page-sidebar-wrapper .article-layout {
+      padding: 30px 0 0;
+      flex: 1;
+    }
+    .page-sidebar-wrapper .tool-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      padding-top: 30px;
+    }
+    @media (max-width: 768px) {
+      .page-sidebar-wrapper {
+        flex-direction: column;
+      }
+      .page-sidebar-wrapper .tool-sidebar {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -15,56 +203,175 @@
       <a href="index.html" class="logo">🔧 在线工具箱</a>
       <ul class="nav-links">
         <li><a href="index.html">首页</a></li>
-        <li><a href="json-formatter.html">JSON</a></li>
-        <li><a href="base64-tool.html">Base64</a></li>
-        <li><a href="qr-generator.html">二维码</a></li>
-        <li><a href="url-encoder.html" class="active">URL 编码</a></li>
-        <li><a href="password-generator.html">密码</a></li>
-        <li><a href="timestamp-converter.html">时间戳</a></li>
-        <li><a href="word-counter.html">字数</a></li>
+        <li><a href="json-formatter.html">JSON 格式化</a></li>
+        <li><a href="base64-tool.html">Base64 工具</a></li>
+        <li><a href="qr-generator.html">二维码生成</a></li>
+        <li><a href="about.html">关于我们</a></li>
       </ul>
     </div>
   </nav>
 
-  <main class="container">
-    <section class="page-header">
-      <h1>URL 编码解码工具</h1>
-      <p>在线 URL 编码（encode）和解码（decode）转换</p>
-    </section>
+  <div class="page-sidebar-wrapper">
+    <div class="article-layout">
+      <h1>URL 编码解码工具 - URL 编码原理与在线转换指南</h1>
+      <div class="article-meta">在线工具箱 · 更新于 2025 年</div>
 
-    <div class="tool-layout">
-      <div class="tool-main">
+      <p>URL 编码（也称为百分号编码，Percent-Encoding）是一种将字符转换为可在 URL 中安全传输的格式的编码机制。根据 RFC 3986 规范，URL 中只允许包含有限的 ASCII 字符子集，包括大小写字母、数字以及少量特殊符号（如连字符、下划线、句点和波浪号）。当 URL 中需要出现中文字符、空格、标点符号或其他不在安全字符集中的字符时，就必须使用 URL 编码将其转换为 <code>%</code> 后跟两位十六进制数的形式。例如空格会被编码为 <code>%20</code>，中文字符"中"会被编码为 <code>%E4%B8%AD</code>。URL 编码是 Web 开发中处理地址栏参数、API 请求、表单提交等场景的基础知识，理解其规则有助于避免各种编码相关的错误。</p>
+
+      <!-- 嵌入工具 -->
+      <div class="tool-embedded">
+        <div class="tool-title">在线 URL 编码解码器</div>
         <div class="form-group">
           <label>输入内容</label>
-          <textarea id="urlInput" placeholder="输入网址或文本..."></textarea>
+          <textarea id="urlInput" placeholder="输入要进行 URL 编码或解码的文本，例如：https://example.com/搜索?q=你好 世界"></textarea>
         </div>
-
         <div class="btn-group">
-          <button class="btn btn-primary" onclick="encodeURL()">🔗 URL 编码</button>
-          <button class="btn btn-primary" onclick="decodeURL()">🔓 URL 解码</button>
-          <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
-          <button class="btn btn-secondary" onclick="copyResult()">📋 复制结果</button>
+          <button class="btn btn-primary" onclick="encodeURL()">URL 编码</button>
+          <button class="btn btn-primary" onclick="decodeURL()">URL 解码</button>
+          <button class="btn btn-secondary" onclick="clearAll()">清空</button>
+          <button class="btn btn-secondary" onclick="copyResult()">复制结果</button>
         </div>
-
         <div class="form-group">
           <label>转换结果</label>
           <div id="urlResult" class="result-box">结果将显示在这里...</div>
         </div>
-
-        <div style="margin-top:30px;">
-          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">什么是 URL 编码？</h2>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">URL 编码（也叫百分号编码）是一种用于将特殊字符转换为可以在 URL 中安全传输的格式的编码方式。例如，中文字符、空格、& 符号等都需要经过 URL 编码才能正确传输。</p>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">常见的 URL 编码示例：空格变为 %20，中文字符变为 %xx%xx 的形式。URL 解码则是将这些编码后的字符还原回原始内容。</p>
-          <p style="color:#475569;font-size:14px;line-height:1.7;">本工具支持完整的 URL 编码和解码操作，包括 Unicode 字符的处理。所有操作均在浏览器本地完成，您的数据不会上传到服务器。</p>
-        </div>
       </div>
 
-      <aside class="tool-sidebar">
-        <div class="ads-container ads-sidebar">广告位预留</div>
-        <div class="ads-container ads-sidebar">广告位预留</div>
-      </aside>
+      <!-- 继续文章 -->
+      <h2>URL 编码的规则</h2>
+      <p>URL 编码的核心思想很简单：将不安全的字符转换为一个百分号（<code>%</code>）加上该字符在 UTF-8 编码下的十六进制表示。但并非所有字符都需要编码，RFC 3986 将 URL 中的字符分为三类：</p>
+
+      <h3>保留字符（Reserved Characters）</h3>
+      <p>保留字符在 URL 中具有特殊含义，用于分隔 URL 的各个组成部分。它们包括：</p>
+      <p><code>: / ? # [ ] @ ! $ &amp; ' ( ) * + , ; =</code></p>
+      <p>这些字符是否需要编码取决于它们出现的位置。例如，<code>/</code> 在路径中是分隔符，不应被编码；但如果 <code>/</code> 出现在查询参数的值中，就必须编码为 <code>%2F</code>，否则会被误认为路径分隔符。</p>
+
+      <h3>不安全字符（Unsafe Characters）</h3>
+      <p>以下字符在 URL 中没有特殊含义，但由于各种原因（可能与网关、代理等中间设备的处理冲突）被认为是不安全的，应当始终进行编码：</p>
+      <p><code>空格 " &lt; &gt; # % { } | \ ^ ~ [ ] `</code></p>
+      <p>其中空格是最常见的不安全字符。在 URL 的路径部分，空格会被编码为 <code>%20</code>；而在查询字符串中，某些规范和历史惯例也允许用加号 <code>+</code> 代替空格。</p>
+
+      <h3>非 ASCII 字符</h3>
+      <p>所有不在 ASCII 范围内的字符（如中文、日文、韩文、Emoji 等）必须先转换为 UTF-8 字节序列，然后对每个字节进行百分号编码。例如"你好"的 UTF-8 编码为 <code>E4 BD A0 E5 A5 BD</code>，因此 URL 编码后为 <code>%E4%BD%A0%E5%A5%BD</code>。这也是为什么一个中文字符会被编码为三个 <code>%XX</code> 序列的原因。</p>
+
+      <h2>URL 编码的常见应用</h2>
+      <p>URL 编码在 Web 开发和网络通信中无处不在，以下是几个典型的应用场景：</p>
+      <ul>
+        <li><strong>查询参数</strong>：当 URL 的查询字符串中包含特殊字符时，必须进行编码。例如搜索关键词"价格&gt;100"中的 <code>&gt;</code> 需要编码为 <code>%3E</code>，否则浏览器可能无法正确解析 URL 结构。</li>
+        <li><strong>路径中的空格和中文</strong>：文件路径或资源路径中如果包含空格或中文字符，例如 <code>/images/产品照片.jpg</code>，必须编码为 <code>/images/%E4%BA%A7%E5%93%81%E7%85%A7%E7%89%87.jpg</code>，否则服务器可能无法正确找到该资源。</li>
+        <li><strong>表单提交</strong>：HTML 表单使用 <code>application/x-www-form-urlencoded</code> 格式提交数据时，所有字段名和字段值都会被自动进行 URL 编码。空格被替换为 <code>+</code>，其他特殊字符按规则编码。</li>
+        <li><strong>API 请求</strong>：调用 RESTful API 时，请求参数经常需要编码。例如 GET 请求的 URL 中包含 JSON 字符串或包含特殊字符的搜索条件时，必须先进行 URL 编码才能正确传递。</li>
+      </ul>
+
+      <h2>URL 编码与 Base64 编码的区别</h2>
+      <p>URL 编码和 Base64 编码虽然都是字符编码方式，但它们的设计目的和适用场景完全不同：</p>
+      <table>
+        <thead>
+          <tr>
+            <th>对比维度</th>
+            <th>URL 编码（百分号编码）</th>
+            <th>Base64 编码</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>设计目的</td>
+            <td>让特殊字符在 URL 中安全传输</td>
+            <td>将二进制数据转换为 ASCII 文本格式</td>
+          </tr>
+          <tr>
+            <td>编码方式</td>
+            <td>逐字符转换为 <code>%XX</code> 或 <code>%XX%XX%XX</code></td>
+            <td>每 3 字节转换为 4 个 Base64 字符</td>
+          </tr>
+          <tr>
+            <td>输出字符集</td>
+            <td>使用十六进制数字（0-9, A-F）和 <code>%</code></td>
+            <td>使用 A-Z, a-z, 0-9, +, /</td>
+          </tr>
+          <tr>
+            <td>数据膨胀</td>
+            <td>ASCII 字符不膨胀，中文膨胀为 3 倍</td>
+            <td>固定膨胀约 33%</td>
+          </tr>
+          <tr>
+            <td>可逆性</td>
+            <td>完全可逆</td>
+            <td>完全可逆</td>
+          </tr>
+          <tr>
+            <td>典型用途</td>
+            <td>URL 参数、路径、表单数据</td>
+            <td>Email 附件、Data URI、JWT、API 认证</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>简单来说，URL 编码是让字符"适应"URL 格式的安全机制，而 Base64 编码是让二进制数据"伪装"成文本的转换方式。两者解决的问题不同，不应混淆使用。</p>
+
+      <h2>常见 URL 编码对照表</h2>
+      <p>以下是一些在日常开发中经常需要编码的字符及其对应的 URL 编码结果，供快速查阅：</p>
+      <table>
+        <thead>
+          <tr>
+            <th>字符</th>
+            <th>说明</th>
+            <th>URL 编码结果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>(空格)</td><td>空格字符</td><td><code>%20</code></td></tr>
+          <tr><td>!</td><td>感叹号</td><td><code>%21</code></td></tr>
+          <tr><td>"</td><td>双引号</td><td><code>%22</code></td></tr>
+          <tr><td>#</td><td>井号（锚点标记）</td><td><code>%23</code></td></tr>
+          <tr><td>$</td><td>美元符号</td><td><code>%24</code></td></tr>
+          <tr><td>%</td><td>百分号本身</td><td><code>%25</code></td></tr>
+          <tr><td>&amp;</td><td>和号（参数分隔符）</td><td><code>%26</code></td></tr>
+          <tr><td>'</td><td>单引号</td><td><code>%27</code></td></tr>
+          <tr><td>(</td><td>左括号</td><td><code>%28</code></td></tr>
+          <tr><td>)</td><td>右括号</td><td><code>%29</code></td></tr>
+          <tr><td>*</td><td>星号</td><td><code>%2A</code></td></tr>
+          <tr><td>+</td><td>加号</td><td><code>%2B</code></td></tr>
+          <tr><td>,</td><td>逗号</td><td><code>%2C</code></td></tr>
+          <tr><td>/</td><td>斜杠（路径分隔符）</td><td><code>%2F</code></td></tr>
+          <tr><td>:</td><td>冒号</td><td><code>%3A</code></td></tr>
+          <tr><td>;</td><td>分号</td><td><code>%3B</code></td></tr>
+          <tr><td>=</td><td>等号（键值分隔符）</td><td><code>%3D</code></td></tr>
+          <tr><td>?</td><td>问号（查询起始符）</td><td><code>%3F</code></td></tr>
+          <tr><td>@</td><td>@ 符号</td><td><code>%40</code></td></tr>
+          <tr><td>中</td><td>中文字符"中"</td><td><code>%E4%B8%AD</code></td></tr>
+          <tr><td>好</td><td>中文字符"好"</td><td><code>%E5%A5%BD</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2>常见问题</h2>
+
+      <h3>为什么 %20 和 + 都代表空格？</h3>
+      <p>这是历史上两个不同规范导致的兼容性问题。<code>%20</code> 是 RFC 3986 规定的标准 URL 编码方式，适用于 URL 的所有部分。而 <code>+</code> 代表空格来自 <code>application/x-www-form-urlencoded</code> 格式（HTML 表单默认的提交格式），该格式最初的设计是为了在编码后的数据中节省空间。因此，在处理查询参数时，你会看到空格有时被编码为 <code>%20</code>，有时被编码为 <code>+</code>。在解码时，需要同时处理这两种情况。本工具的解码功能会自动将 <code>+</code> 还原为空格。</p>
+
+      <h3>什么是双重编码问题？</h3>
+      <p>双重编码是指对已经编码过的字符串再次进行编码。例如，空格第一次编码后变成 <code>%20</code>，如果再次编码，<code>%</code> 会被编码为 <code>%25</code>，结果变成 <code>%2520</code>。这通常是一个编程错误，会导致解码后得到原始编码字符串而非原始文本。双重编码常见于参数经过多层传递（如前端 → 后端 → 重定向 → 另一个服务）时没有正确解码就再次编码的情况。调试时如果看到类似 <code>%25XX</code> 的模式，很可能就是双重编码。解决方法是确保每一层只在需要时编码一次，并在使用前正确解码。</p>
+
+      <h3>encodeURIComponent 和 encodeURI 的区别是什么？</h3>
+      <p>JavaScript 提供了两个 URL 编码函数，它们的区别在于编码范围不同。<code>encodeURI()</code> 不会编码 URL 的保留字符（如 <code>: / ? # &amp; =</code> 等），因此它适合对完整的 URL 进行编码，保留 URL 的结构分隔符不被破坏。<code>encodeURIComponent()</code> 则会编码所有保留字符（除了字母、数字、<code>- _ . ! ~ * ' ( )</code>），适合对 URL 的组成部分（如查询参数的值）进行编码。举个例子，对于字符串 <code>a=b&amp;c=d</code>：<code>encodeURI</code> 不会编码 <code>=</code> 和 <code>&amp;</code>，而 <code>encodeURIComponent</code> 会将它们分别编码为 <code>%3D</code> 和 <code>%26</code>。在实际开发中，绝大多数场景应该使用 <code>encodeURIComponent</code>，只有在编码整个 URL 时才使用 <code>encodeURI</code>。</p>
+
+      <h2>使用方法</h2>
+      <p>使用本工具进行 URL 编码和解码非常简单：</p>
+      <ol>
+        <li>在上方工具的输入框中粘贴或输入需要进行编码或解码的文本或 URL。</li>
+        <li>点击"URL 编码"按钮将文本转换为 URL 编码格式，或点击"URL 解码"按钮将已编码的 URL 还原为原始文本。</li>
+        <li>转换结果会立即显示在下方的结果区域中，点击"复制结果"按钮即可将结果复制到剪贴板。</li>
+      </ol>
+      <p>本工具采用 UTF-8 编码，能够正确处理中文字符、日文字符、Emoji 以及各类特殊符号的 URL 编码和解码。所有操作均在浏览器本地完成，不会将您的数据发送到任何服务器，充分保障数据隐私安全。</p>
     </div>
-  </main>
+    <aside class="tool-sidebar">
+      <div class="ads-container ads-sidebar">
+        广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
+      </div>
+      <div class="ads-container ads-sidebar">
+        广告位预留
+      </div>
+    </aside>
+  </div>
 
   <footer class="footer">
     <div class="footer-content">
@@ -83,23 +390,29 @@
       const input = document.getElementById('urlInput').value;
       const resultBox = document.getElementById('urlResult');
       if (!input) {
-        resultBox.textContent = '请输入要编码的内容';
+        resultBox.textContent = '请输入要编码的文本';
         return;
       }
-      resultBox.textContent = encodeURIComponent(input);
+      try {
+        const encoded = encodeURIComponent(input);
+        resultBox.textContent = encoded;
+      } catch (e) {
+        resultBox.textContent = '编码失败：' + e.message;
+      }
     }
 
     function decodeURL() {
       const input = document.getElementById('urlInput').value.trim();
       const resultBox = document.getElementById('urlResult');
       if (!input) {
-        resultBox.textContent = '请输入要解码的内容';
+        resultBox.textContent = '请输入要解码的 URL 编码字符串';
         return;
       }
       try {
-        resultBox.textContent = decodeURIComponent(input);
+        const decoded = decodeURIComponent(input.replace(/\+/g, ' '));
+        resultBox.textContent = decoded;
       } catch (e) {
-        resultBox.textContent = '❌ 解码失败：无效的 URL 编码字符串';
+        resultBox.textContent = '解码失败：无效的 URL 编码字符串';
       }
     }
 
@@ -111,7 +424,9 @@
     function copyResult() {
       const result = document.getElementById('urlResult').textContent;
       if (result === '结果将显示在这里...') return;
-      navigator.clipboard.writeText(result).then(() => { alert('已复制到剪贴板'); });
+      navigator.clipboard.writeText(result).then(function() {
+        alert('已复制到剪贴板');
+      });
     }
   </script>
 </body>

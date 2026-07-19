@@ -5,9 +5,198 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1960589035364427"
        crossorigin="anonymous"></script>
-  <title>Base64 编解码工具 - 在线文本 Base64 转换</title>
-  <meta name="description" content="免费的在线 Base64 编码和解码工具，支持文本实时转换，简单易用，无需安装。">
+  <title>Base64 编解码工具 - Base64 原理详解与在线转换指南</title>
+  <meta name="description" content="Base64 编码解码在线工具与完整教程。详解 Base64 编码原理、应用场景、与 URL 安全编码的区别，支持中文字符编解码。">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .article-layout {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+    .article-layout p,
+    .article-layout li {
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .article-layout h1 {
+      font-size: 26px;
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .article-layout .article-meta {
+      color: #94a3b8;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .article-layout h2 {
+      color: #1e293b;
+      font-size: 18px;
+      margin: 32px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .article-layout h3 {
+      color: #1e293b;
+      font-size: 16px;
+      margin: 24px 0 10px;
+    }
+    .article-layout ul,
+    .article-layout ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    .article-layout li {
+      margin-bottom: 6px;
+    }
+    .article-layout code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #334155;
+    }
+    .article-layout pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .article-layout pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+    .article-layout table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .article-layout th,
+    .article-layout td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .article-layout th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 600;
+    }
+    .tool-embedded {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 28px 0;
+    }
+    .tool-embedded .tool-title {
+      font-size: 18px;
+      color: #1e293b;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .tool-embedded .form-group {
+      margin-bottom: 16px;
+    }
+    .tool-embedded .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #334155;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .tool-embedded textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .tool-embedded textarea:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+    .tool-embedded .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tool-embedded .btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .tool-embedded .btn:active {
+      transform: scale(0.97);
+    }
+    .tool-embedded .btn-primary {
+      background: #3b82f6;
+      color: #fff;
+    }
+    .tool-embedded .btn-primary:hover {
+      background: #2563eb;
+    }
+    .tool-embedded .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .tool-embedded .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+    .tool-embedded .result-box {
+      min-height: 80px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #475569;
+      word-break: break-all;
+      line-height: 1.6;
+    }
+    .sidebar-with-article {
+      display: flex;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .sidebar-with-article .article-col {
+      flex: 1;
+      min-width: 0;
+    }
+    .sidebar-with-article .tool-sidebar {
+      width: 260px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 900px) {
+      .sidebar-with-article {
+        flex-direction: column;
+      }
+      .sidebar-with-article .tool-sidebar {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -23,58 +212,209 @@
     </div>
   </nav>
 
-  <main class="container">
-    <section class="page-header">
-      <h1>Base64 编解码工具</h1>
-      <p>文本与 Base64 编码互相转换，实时处理</p>
-    </section>
+  <div class="sidebar-with-article">
+    <div class="article-col">
+      <div class="article-layout">
 
-    <div class="tool-layout">
-      <div class="tool-main">
-        <div class="form-group">
-          <label>输入文本</label>
-          <textarea id="textInput" placeholder="输入要编码或解码的文本..."></textarea>
+        <h1>Base64 编解码工具 - Base64 原理详解与在线转换指南</h1>
+        <p class="article-meta">在线工具箱 &middot; 最后更新：2026 年 7 月</p>
+
+        <h2>什么是 Base64 编码？</h2>
+
+        <p>Base64 是一种基于 64 个可打印 ASCII 字符来表示二进制数据的编码方法。它的核心思想并不复杂：计算机中存储的所有数据本质上都是 0 和 1 组成的二进制流，但很多文本协议（如电子邮件、HTTP 请求、JSON 配置文件）只接受可打印的 ASCII 字符。Base64 的作用就是将二进制数据"翻译"成纯文本形式，使之能够在这些纯文本环境中安全传输。</p>
+
+        <p>之所以叫 "Base64"，是因为这套编码方案使用了一个由 64 个字符组成的固定字符集：大写字母 A 到 Z（26 个）、小写字母 a 到 z（26 个）、数字 0 到 9（10 个），以及加号 <code>+</code> 和斜杠 <code>/</code>（2 个），恰好凑齐 64 个。另外还有一个等号 <code>=</code> 用作填充符。</p>
+
+        <p>在体积方面，Base64 编码会将原始数据按每 3 个字节一组进行拆分，然后将其转换为 4 个 Base64 字符。由于 3 字节（24 位）的数据被映射为 4 个字符（每个字符代表 6 位信息），编码后的数据量会变为原来的 4/3，也就是体积增大约 33%。这是 Base64 编码的固有开销，在任何实现中都无法避免。</p>
+
+        <!-- 嵌入工具 -->
+        <div class="tool-embedded">
+          <div class="tool-title">在线 Base64 编解码工具</div>
+          <div class="form-group">
+            <label>输入文本</label>
+            <textarea id="textInput" placeholder="输入要编码或解码的文本..."></textarea>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="encodeBase64()">编码为 Base64</button>
+            <button class="btn btn-primary" onclick="decodeBase64()">解码 Base64</button>
+            <button class="btn btn-secondary" onclick="clearAll()">清空</button>
+            <button class="btn btn-secondary" onclick="copyResult()">复制结果</button>
+          </div>
+          <div class="form-group">
+            <label>转换结果</label>
+            <div id="base64Result" class="result-box">结果将显示在这里...</div>
+          </div>
         </div>
 
-        <div class="btn-group">
-          <button class="btn btn-primary" onclick="encodeBase64()">🔒 编码为 Base64</button>
-          <button class="btn btn-primary" onclick="decodeBase64()">🔓 解码 Base64</button>
-          <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
-          <button class="btn btn-secondary" onclick="copyResult()">📋 复制结果</button>
-        </div>
+        <h2>Base64 编码的数学原理</h2>
 
-        <div class="form-group">
-          <label>转换结果</label>
-          <div id="base64Result" class="result-box">结果将显示在这里...</div>
-        </div>
+        <p>理解 Base64 的编码过程，关键在于理解"位"的重新分组。计算机中每个字节由 8 个二进制位组成，3 个字节就是 24 个二进制位。Base64 编码将这 24 个位均匀地分成 4 组，每组 6 个位。因为 <code>2 的 6 次方 = 64</code>，所以 6 位二进制数恰好可以用 64 个字符中的某一个来表示。这就是为什么 Base64 的字符集刚好是 64 个。</p>
 
-        <div style="margin-top:30px;">
-          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">什么是 Base64 编码？</h2>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">Base64 是一种将二进制数据转换为 ASCII 字符串的编码方式，常用于在文本协议中安全地传输二进制数据。它将每 3 个字节（24 位）的数据转换为 4 个 ASCII 字符，编码后的数据体积会增大约 33%。</p>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">Base64 在实际开发中有广泛的应用场景：电子邮件附件的 MIME 编码、HTML/CSS 中的小图片内嵌（Data URI）、API 接口中的认证信息传递（Basic Auth）、JWT Token 的载荷部分等。</p>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">本工具支持包含中文字符的 Base64 编码和解码，采用 UTF-8 编码处理，能够正确转换中文、日文、韩文等 Unicode 字符。这是很多在线工具不支持的功能。</p>
+        <p>我们用一个具体例子来演示。假设要编码的原始文本是三个 ASCII 字符 <code>Man</code>，它们对应的 ASCII 值分别是 77（M）、97（a）、110（n），转换为二进制如下：</p>
 
-          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">常见使用场景</h3>
-          <ul style="color:#475569;font-size:14px;line-height:1.8;padding-left:20px;">
-            <li>解码 API 响应中的 Base64 编码数据</li>
-            <li>生成 HTML 中内嵌图片的 Data URI</li>
-            <li>查看或修改 JWT Token 中的内容</li>
-            <li>处理配置文件中的 Base64 编码字符串</li>
-            <li>调试网络请求中编码的参数</li>
-          </ul>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-top:10px;">所有编解码操作均在浏览器本地完成，您的数据不会发送到任何服务器。</p>
-        </div>
+        <pre><code>M  -> 01001101
+a  -> 01100001
+n  -> 01101110</code></pre>
+
+        <p>将这 24 位连成一串：<code>010011010110000101101110</code>，然后每 6 位一组进行切分：</p>
+
+        <pre><code>010011 | 010110 | 000101 | 101110</code></pre>
+
+        <p>将每组 6 位二进制转换为十进制值，再查 Base64 字符表得到对应的字符：</p>
+
+        <pre><code>010011 = 19 -> T
+010110 = 22 -> W
+000101 =  5 -> F
+101110 = 46 -> u</code></pre>
+
+        <p>所以 <code>Man</code> 经 Base64 编码后的结果是 <code>TWFu</code>。如果原始数据的字节数不是 3 的整数倍，比如只有 1 个字节或 2 个字节，剩下的位会用 0 补齐，并在编码结果末尾加上 1 个或 2 个等号 <code>=</code> 作为填充符，以标示原始数据长度。</p>
+
+        <h2>Base64 字符表</h2>
+
+        <p>完整的 Base64 字符索引表如下。索引值 0-25 对应大写字母 A-Z，26-51 对应小写字母 a-z，52-61 对应数字 0-9，62 对应 <code>+</code>，63 对应 <code>/</code>：</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>索引</th><th>字符</th><th>索引</th><th>字符</th>
+              <th>索引</th><th>字符</th><th>索引</th><th>字符</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>A</td><td>16</td><td>Q</td><td>32</td><td>g</td><td>48</td><td>w</td></tr>
+            <tr><td>1</td><td>B</td><td>17</td><td>R</td><td>33</td><td>h</td><td>49</td><td>x</td></tr>
+            <tr><td>2</td><td>C</td><td>18</td><td>S</td><td>34</td><td>i</td><td>50</td><td>y</td></tr>
+            <tr><td>3</td><td>D</td><td>19</td><td>T</td><td>35</td><td>j</td><td>51</td><td>z</td></tr>
+            <tr><td>4</td><td>E</td><td>20</td><td>U</td><td>36</td><td>k</td><td>52</td><td>0</td></tr>
+            <tr><td>5</td><td>F</td><td>21</td><td>V</td><td>37</td><td>l</td><td>53</td><td>1</td></tr>
+            <tr><td>6</td><td>G</td><td>22</td><td>W</td><td>38</td><td>m</td><td>54</td><td>2</td></tr>
+            <tr><td>7</td><td>H</td><td>23</td><td>X</td><td>39</td><td>n</td><td>55</td><td>3</td></tr>
+            <tr><td>8</td><td>I</td><td>24</td><td>Y</td><td>40</td><td>o</td><td>56</td><td>4</td></tr>
+            <tr><td>9</td><td>J</td><td>25</td><td>Z</td><td>41</td><td>p</td><td>57</td><td>5</td></tr>
+            <tr><td>10</td><td>K</td><td>26</td><td>a</td><td>42</td><td>q</td><td>58</td><td>6</td></tr>
+            <tr><td>11</td><td>L</td><td>27</td><td>b</td><td>43</td><td>r</td><td>59</td><td>7</td></tr>
+            <tr><td>12</td><td>M</td><td>28</td><td>c</td><td>44</td><td>s</td><td>60</td><td>8</td></tr>
+            <tr><td>13</td><td>N</td><td>29</td><td>d</td><td>45</td><td>t</td><td>61</td><td>9</td></tr>
+            <tr><td>14</td><td>O</td><td>30</td><td>e</td><td>46</td><td>u</td><td>62</td><td>+</td></tr>
+            <tr><td>15</td><td>P</td><td>31</td><td>f</td><td>47</td><td>v</td><td>63</td><td>/</td></tr>
+          </tbody>
+        </table>
+
+        <p>当原始数据的字节数不是 3 的倍数时，不足的部分会补零，对应的输出位置用填充符 <code>=</code> 代替。例如原始数据只有 1 个字节时产生 2 个 <code>=</code>，2 个字节时产生 1 个 <code>=</code>，恰好 3 个字节时则不需要填充符。</p>
+
+        <h2>Base64 的实际应用场景</h2>
+
+        <p>Base64 编码在软件开发和互联网协议中有大量实际应用，以下是几个最常见的场景：</p>
+
+        <h3>1. Data URI 内嵌图片</h3>
+        <p>在 HTML 或 CSS 中，可以通过 Base64 将小图片直接编码为文本字符串并内嵌到页面中，从而减少 HTTP 请求的数量。这种方式特别适用于小尺寸的图标、logo 和装饰性图片。</p>
+        <pre><code>&lt;img src="data:image/png;base64,iVBORw0KGgo..." alt="icon"&gt;</code></pre>
+
+        <h3>2. Basic Auth 认证头</h3>
+        <p>HTTP Basic Authentication 协议要求将用户名和密码拼接后进行 Base64 编码，然后放在请求头的 <code>Authorization</code> 字段中发送。例如用户名 <code>admin</code>、密码 <code>123456</code> 拼接为 <code>admin:123456</code>，编码后为 <code>YWRtaW46MTIzNDU2</code>。</p>
+        <pre><code>Authorization: Basic YWRtaW46MTIzNDU2</code></pre>
+
+        <h3>3. JWT Token</h3>
+        <p>JSON Web Token（JWT）是一种广泛使用的身份验证令牌格式。JWT 由三部分组成：Header、Payload 和 Signature，每部分之间用点号 <code>.</code> 分隔，其中 Header 和 Payload 都是经过 Base64URL 编码的 JSON 字符串。你可以用本文中的工具解码 JWT 的前两段来查看其内容。</p>
+        <pre><code>eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.SflKx</code></pre>
+
+        <h3>4. 邮件附件的 MIME 编码</h3>
+        <p>电子邮件协议 SMTP 最初只支持传输纯 ASCII 文本，无法直接携带二进制附件。MIME 标准引入了 Base64 编码，将图片、文档等二进制文件转换为纯文本后嵌入邮件正文。你在邮件源码中看到的 <code>Content-Transfer-Encoding: base64</code> 就是这个原理。</p>
+
+        <h3>5. 配置文件中编码二进制数据</h3>
+        <p>在 Kubernetes、Docker 以及各类云服务的配置文件中，经常需要将证书、密钥等二进制数据以 Base64 字符串的形式写入 YAML 或 JSON 配置。例如 Kubernetes Secret 对象中的 value 字段就要求使用 Base64 编码。</p>
+
+        <h2>Base64 URL 安全变体</h2>
+
+        <p>标准 Base64 字符集中包含 <code>+</code> 和 <code>/</code> 这两个字符。然而在 URL 和文件名场景中，<code>+</code> 会被解析为空格，<code>/</code> 会被解析为路径分隔符，而 <code>=</code> 在 URL 参数中也可能引起歧义。为了解决这个问题，RFC 4648 定义了 Base64 的 URL 安全变体（Base64URL）。</p>
+
+        <p>Base64URL 的改动非常简单，只有三处替换：</p>
+        <ul>
+          <li><code>+</code> 替换为 <code>-</code>（减号）</li>
+          <li><code>/</code> 替换为 <code>_</code>（下划线）</li>
+          <li>末尾的填充符 <code>=</code> 通常被省略（具体实现可选是否保留）</li>
+        </ul>
+
+        <p>JWT Token 中使用的就是 Base64URL 编码而非标准 Base64 编码。如果你需要解码 JWT，可能需要先将 <code>-</code> 替换回 <code>+</code>，将 <code>_</code> 替换回 <code>/</code>，再根据需要补齐填充符，然后才能正确解码。</p>
+
+        <h2>Base64 与其他编码方式的对比</h2>
+
+        <p>除了 Base64，常见的二进制数据编码方式还有 Hex 编码、URL 编码和 Base32。它们各有特点，适用场景也不同：</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>编码方式</th>
+              <th>字符集</th>
+              <th>体积膨胀率</th>
+              <th>典型用途</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Base64</td>
+              <td>A-Z, a-z, 0-9, +, /</td>
+              <td>约 33%</td>
+              <td>邮件附件、JWT、Data URI、配置文件</td>
+            </tr>
+            <tr>
+              <td>Hex（十六进制）</td>
+              <td>0-9, A-F</td>
+              <td>100%（翻倍）</td>
+              <td>调试输出、哈希值显示、颜色代码</td>
+            </tr>
+            <tr>
+              <td>URL 编码</td>
+              <td>ASCII 可打印字符 + %XX</td>
+              <td>不确定</td>
+              <td>URL 参数转义、表单提交</td>
+            </tr>
+            <tr>
+              <td>Base32</td>
+              <td>A-Z, 2-7</td>
+              <td>约 60%</td>
+              <td>不区分大小写的环境、TOTP 验证码</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Hex 编码（十六进制编码）最为直观，每个字节对应两个十六进制字符，但代价是体积翻倍，通常只用于人类可读的调试场景或短数据。URL 编码主要解决 URL 中的保留字符转义问题，体积膨胀不固定。Base32 使用纯大写字母和有限数字，在不区分大小写的场景（如语音播报）中有优势，但体积膨胀更大。综合来看，Base64 在效率和通用性之间取得了最好的平衡，因此应用最为广泛。</p>
+
+        <h2>常见问题</h2>
+
+        <h3>为什么 Base64 编码后会有 = 号？</h3>
+        <p>等号 <code>=</code> 是 Base64 的填充符。Base64 编码每次处理 3 个字节（24 位），将其映射为 4 个字符。当原始数据的字节数不是 3 的倍数时，最后不足 3 字节的部分需要补零凑齐 24 位，然后多出来的输出字符用 <code>=</code> 替换。如果原始数据只余 1 字节，末尾补两个 <code>=</code>；余 2 字节则补一个 <code>=</code>；恰好是 3 的倍数时不需要填充符。解码器通过末尾 <code>=</code> 的数量来推断原始数据的真实长度，从而正确还原数据。</p>
+
+        <h3>Base64 可以用来加密吗？</h3>
+        <p>不可以。Base64 只是一种编码方式，不是加密算法。任何人只要知道数据经过了 Base64 编码，就可以直接将其解码还原。Base64 的目的是让二进制数据能在纯文本环境中传输，而非保护数据安全。如果需要保护数据，应当使用 AES、RSA 等真正的加密算法。有些初学者会将混淆和加密混为一谈，认为经过 Base64 处理后数据就"安全"了，这是一个常见的误解。</p>
+
+        <h3>中文字符的 Base64 编码为什么那么长？</h3>
+        <p>这是因为在进行 Base64 编码之前，中文字符首先会被转换为 UTF-8 字节序列，而每个中文字符在 UTF-8 中通常占 3 个字节。以"你好"两个字为例，它们对应的 UTF-8 字节共有 6 个，经 Base64 编码后变成 8 个字符。而同样含义的两个英文字符 "Hi" 只有 2 个字节，编码后只有 4 个字符。所以中文字符的 Base64 编码结果看起来比英文长得多，其根本原因是 UTF-8 编码下中文字符本身就占用更多字节。</p>
+
+        <h2>使用方法</h2>
+
+        <p>使用上方的在线 Base64 编解码工具非常简单：</p>
+
+        <ol>
+          <li><strong>编码</strong>：在输入框中输入任意文本（支持中文、日文、韩文等 Unicode 字符），点击"编码为 Base64"按钮，即可在下方看到对应的 Base64 编码结果。</li>
+          <li><strong>解码</strong>：将 Base64 字符串粘贴到输入框中，点击"解码 Base64"按钮，工具会自动还原为原始文本。</li>
+          <li><strong>复制结果</strong>：点击"复制结果"按钮可以将转换结果一键复制到剪贴板，方便粘贴到代码、配置文件或其他应用中。</li>
+          <li><strong>清空重置</strong>：点击"清空"按钮可以同时清除输入框和输出框的内容。</li>
+        </ol>
+
+        <p>所有编解码操作均在浏览器本地完成，您的输入数据不会被发送到任何远程服务器。本工具采用 UTF-8 编码处理，能够正确支持包含中文、日文、韩文、Emoji 等多字节 Unicode 字符的 Base64 编码与解码。</p>
+
       </div>
-      <aside class="tool-sidebar">
-        <div class="ads-container ads-sidebar">
-          广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
-        </div>
-        <div class="ads-container ads-sidebar">
-          广告位预留
-        </div>
-      </aside>
     </div>
-  </main>
+    <aside class="tool-sidebar">
+      <div class="ads-container ads-sidebar">
+        广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
+      </div>
+      <div class="ads-container ads-sidebar">
+        广告位预留
+      </div>
+    </aside>
+  </div>
 
   <footer class="footer">
     <div class="footer-content">
@@ -100,7 +440,7 @@
         const encoded = btoa(unescape(encodeURIComponent(input)));
         resultBox.textContent = encoded;
       } catch (e) {
-        resultBox.textContent = '❌ 编码失败：' + e.message;
+        resultBox.textContent = '编码失败：' + e.message;
       }
     }
 
@@ -115,7 +455,7 @@
         const decoded = decodeURIComponent(escape(atob(input)));
         resultBox.textContent = decoded;
       } catch (e) {
-        resultBox.textContent = '❌ 解码失败：无效的 Base64 字符串';
+        resultBox.textContent = '解码失败：无效的 Base64 字符串';
       }
     }
 
@@ -127,7 +467,7 @@
     function copyResult() {
       const result = document.getElementById('base64Result').textContent;
       if (result === '结果将显示在这里...') return;
-      navigator.clipboard.writeText(result).then(() => {
+      navigator.clipboard.writeText(result).then(function() {
         alert('已复制到剪贴板');
       });
     }

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1960589035364427"
        crossorigin="anonymous"></script>
-  <title>字数统计工具 - 在线统计字数、字符数、行数</title>
-  <meta name="description" content="免费的在线字数统计工具，实时统计文本的字数、字符数、行数、段落数，支持中文和英文混排统计。">
+  <title>字数统计工具 - 在线字数统计与写作规范指南</title>
+  <meta name="description" content="在线字数统计工具与写作规范指南。实时统计文本字数、字符数、行数、段落数，详解不同场景下的字数要求与统计标准。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,76 +15,234 @@
       <a href="index.html" class="logo">🔧 在线工具箱</a>
       <ul class="nav-links">
         <li><a href="index.html">首页</a></li>
-        <li><a href="json-formatter.html">JSON</a></li>
-        <li><a href="base64-tool.html">Base64</a></li>
-        <li><a href="qr-generator.html">二维码</a></li>
-        <li><a href="url-encoder.html">URL 编码</a></li>
-        <li><a href="password-generator.html">密码</a></li>
-        <li><a href="timestamp-converter.html">时间戳</a></li>
-        <li><a href="word-counter.html" class="active">字数</a></li>
+        <li><a href="json-formatter.html">JSON 格式化</a></li>
+        <li><a href="base64-tool.html">Base64 工具</a></li>
+        <li><a href="qr-generator.html">二维码生成</a></li>
+        <li><a href="word-counter.html" class="active">字数统计</a></li>
+        <li><a href="about.html">关于我们</a></li>
       </ul>
     </div>
   </nav>
 
   <main class="container">
-    <section class="page-header">
-      <h1>字数统计工具</h1>
-      <p>实时统计文本字数、字符数、行数和段落数</p>
-    </section>
-
     <div class="tool-layout">
-      <div class="tool-main">
-        <div class="form-group">
-          <label>输入文本</label>
-          <textarea id="textInput" placeholder="粘贴或输入要统计的文本..." oninput="countText()"></textarea>
+      <div class="tool-main" style="max-width:800px;margin:0 auto;">
+
+        <!-- 文章开头 H1 大标题 -->
+        <h1 style="font-size:24px;color:#1e293b;margin-bottom:16px;">字数统计工具 - 在线字数统计与写作规范指南</h1>
+
+        <!-- 第一段：字数统计工具的用途 -->
+        <div style="margin-top:30px;">
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">字数统计工具是写作过程中最常使用的辅助工具之一。无论你是在撰写学术论文、编辑微信公众号文章、准备社交媒体发布内容，还是编写简历，都需要在特定的字数范围内完成内容创作。一个精准、高效的字数统计工具可以帮助你实时掌控文本长度，避免因字数不足或超标而被退稿或扣分。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">本页面提供一款完全免费、无需注册、在浏览器本地运行的在线字数统计工具。它能够实时统计文本的字数、字符数、不含空格字符数、行数、段落数和字节数，所有数据处理均在你的设备上完成，不会上传到任何服务器，充分保障你的隐私安全。与此同时，本文还将深入讲解中英文字数统计的差异、不同平台的字数要求、以及字数统计的技术实现原理，帮助你全面理解"字数"这个看似简单却暗藏玄机的概念。</p>
         </div>
 
-        <div class="btn-group">
-          <button class="btn btn-secondary" onclick="clearText()">🗑️ 清空</button>
-          <button class="btn btn-secondary" onclick="copyText()">📋 复制文本</button>
-        </div>
+        <!-- 嵌入工具 -->
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">在线字数统计工具</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:16px;">将你需要统计的文本粘贴到下方输入框，工具会自动实时计算各项统计数据。支持中文、英文及中英混排文本的精确统计。</p>
 
-        <div class="form-group" style="background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0;">
-          <label style="margin-bottom:12px;">统计结果</label>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;">
-            <div style="text-align:center;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">
-              <div id="wordCount" style="font-size:24px;font-weight:700;color:#2563eb;">0</div>
-              <div style="font-size:12px;color:#64748b;margin-top:4px;">字数</div>
+          <!-- 统计面板：6 格 -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;">
+              <div style="font-size:13px;color:#64748b;margin-bottom:4px;">字数</div>
+              <div id="wordCount" style="font-size:28px;font-weight:700;color:#1e293b;">0</div>
             </div>
-            <div style="text-align:center;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">
-              <div id="charCount" style="font-size:24px;font-weight:700;color:#2563eb;">0</div>
-              <div style="font-size:12px;color:#64748b;margin-top:4px;">字符数</div>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;">
+              <div style="font-size:13px;color:#64748b;margin-bottom:4px;">字符数</div>
+              <div id="charCount" style="font-size:28px;font-weight:700;color:#1e293b;">0</div>
             </div>
-            <div style="text-align:center;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">
-              <div id="charNoSpace" style="font-size:24px;font-weight:700;color:#2563eb;">0</div>
-              <div style="font-size:12px;color:#64748b;margin-top:4px;">不含空格</div>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;">
+              <div style="font-size:13px;color:#64748b;margin-bottom:4px;">不含空格字符数</div>
+              <div id="charNoSpaceCount" style="font-size:28px;font-weight:700;color:#1e293b;">0</div>
             </div>
-            <div style="text-align:center;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">
-              <div id="lineCount" style="font-size:24px;font-weight:700;color:#2563eb;">0</div>
-              <div style="font-size:12px;color:#64748b;margin-top:4px;">行数</div>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;">
+              <div style="font-size:13px;color:#64748b;margin-bottom:4px;">行数</div>
+              <div id="lineCount" style="font-size:28px;font-weight:700;color:#1e293b;">0</div>
             </div>
-            <div style="text-align:center;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">
-              <div id="paragraphCount" style="font-size:24px;font-weight:700;color:#2563eb;">0</div>
-              <div style="font-size:12px;color:#64748b;margin-top:4px;">段落数</div>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;">
+              <div style="font-size:13px;color:#64748b;margin-bottom:4px;">段落数</div>
+              <div id="paraCount" style="font-size:28px;font-weight:700;color:#1e293b;">0</div>
             </div>
-            <div style="text-align:center;padding:12px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">
-              <div id="byteCount" style="font-size:24px;font-weight:700;color:#2563eb;">0</div>
-              <div style="font-size:12px;color:#64748b;margin-top:4px;">字节数</div>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;">
+              <div style="font-size:13px;color:#64748b;margin-bottom:4px;">字节数</div>
+              <div id="byteCount" style="font-size:28px;font-weight:700;color:#1e293b;">0</div>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label>输入或粘贴文本</label>
+            <textarea id="textInput" placeholder="在此输入或粘贴需要统计字数的文本..." oninput="updateStats()"></textarea>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="clearText()">🗑️ 清空</button>
+            <button class="btn btn-secondary" onclick="copyText()">📋 复制文本</button>
           </div>
         </div>
 
+        <!-- 继续文章：中英文字数统计的差异 -->
         <div style="margin-top:30px;">
-          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">字数统计有什么用？</h2>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">字数统计是写作、编辑和内容创作中常用的工具。无论是撰写论文、编辑文章、编写社交媒体内容，还是控制短信字数，都需要知道文本的精确字数。</p>
-          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">本工具支持中文和英文混排统计。中文字符按字数计算，英文单词按空格分隔计算。同时还会统计字符数（含空格和不含空格）、行数、段落数和字节数，满足各种场景需求。</p>
-          <p style="color:#475569;font-size:14px;line-height:1.7;">所有统计在浏览器本地实时计算，您的文本内容不会上传到服务器，保护隐私安全。</p>
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">中英文字数统计的差异</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">中文和英文在字数统计上存在根本性的差异，这是很多人感到困惑的根源。英文是以单词为单位进行计数的——连续的字母序列被一个或多个空格分隔，每一个独立的单词记为一个"字"。例如 "Hello World" 的字数为 2。而中文是以汉字字符为基本计数单位，每一个汉字算作一个"字"，词语之间没有空格分隔。例如"你好世界"的字数为 4。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">当中英文混排时，情况变得更加复杂。常见做法是分别计算：先识别所有连续的中文字符序列（每个汉字各算一字），再识别所有由空格分隔的英文单词（每个单词算一字），最后将两者相加。例如"我love编程"会被统计为 5 个字（"我" + "love" + "编" + "程" —— 实际上按更精细的分词逻辑，"love"算一个英文单词，中文字各算一字）。这种混合统计方式确保了中英文内容都能得到合理的计数。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">不同工具的统计结果可能存在差异，原因在于它们对"字"的定义不同。有的工具把标点符号也计入字数，有的则将其排除；有的工具对英文采用纯空格分词，有的则通过词形分析引擎进行更智能的切分；还有的工具在中英混排时采用不同的合并策略。因此，在提交需要严格字数限制的文稿时，务必了解目标平台的统计规则，并使用与之匹配的统计工具。</p>
         </div>
-      </div>
 
+        <!-- 不同场景的字数要求 -->
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">不同场景的字数要求</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">不同的写作场景对字数有着截然不同的要求。下表汇总了常见平台和场景的字数或字符限制，供你在写作时快速参考。</p>
+
+          <div style="overflow-x:auto;margin:16px 0;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;color:#475569;">
+              <thead>
+                <tr style="background:#f1f5f9;">
+                  <th style="border:1px solid #e2e8f0;padding:8px 12px;text-align:left;color:#1e293b;font-weight:600;">场景 / 平台</th>
+                  <th style="border:1px solid #e2e8f0;padding:8px 12px;text-align:left;color:#1e293b;font-weight:600;">字数 / 字符限制</th>
+                  <th style="border:1px solid #e2e8f0;padding:8px 12px;text-align:left;color:#1e293b;font-weight:600;">说明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">学术论文（本科）</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">5,000 - 10,000 字</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">因学校和专业而异，一般不超过 1.5 万字</td>
+                </tr>
+                <tr style="background:#f8fafc;">
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">学术论文（硕士）</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">20,000 - 50,000 字</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">含参考文献，理工科偏少，文科偏多</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">学术论文（博士）</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">50,000 - 100,000 字</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">各校要求不同，通常要求系统性的创新研究</td>
+                </tr>
+                <tr style="background:#f8fafc;">
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">Twitter / X</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">280 字符</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">中英文均按字符计算，CJK 字符计为 2</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">微信公众号</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">建议 800 - 2,500 字</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">无硬性上限，但过长会影响完读率</td>
+                </tr>
+                <tr style="background:#f8fafc;">
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">微博</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">2,000 字符</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">含标点与空格，图片/视频/话题链接另计</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">Google Ads 描述</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">90 字符</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">每个描述行最多 30 个字符（响应式搜索广告）</td>
+                </tr>
+                <tr style="background:#f8fafc;">
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">Meta Description</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">建议 120 - 160 字符</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">超出部分会被搜索引擎截断显示</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">简历</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">建议 1 - 2 页</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">约 300 - 800 字，突出核心经历与技能</td>
+                </tr>
+                <tr style="background:#f8fafc;">
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">小说投稿</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">60,000 - 100,000 字</td>
+                  <td style="border:1px solid #e2e8f0;padding:8px 12px;">因出版社和类型而异，短篇通常 3,000 - 10,000 字</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">以上数据仅供参考，具体要求请以各平台或机构公布的最新标准为准。在实际写作中，建议将字数控制在推荐范围的中段，既留有调整空间，又不至于因精简过度而丢失关键信息。</p>
+        </div>
+
+        <!-- 如何高效控制写作字数 -->
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">如何高效控制写作字数</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">很多写作者都会面临"写不够"或"写太多"的困扰。掌握一些实用的字数控制技巧，可以让你的写作过程更加高效和从容。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">写作前列大纲</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">在正式动笔之前，先列出文章的大纲结构。确定每个章节或段落需要覆盖的核心要点，并为每个部分预估大致的字数占比。例如，一篇 2000 字的文章可以分为引言（200 字）、主体（1500 字，分三个小节各 500 字）和结论（300 字）。有了这样的框架，你在写作时就不会偏离主题，也能更好地控制整体篇幅。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">分段写作与实时检查</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">不要试图一口气写完全文。按照大纲的划分，逐段完成每个部分，每完成一段就用字数统计工具检查当前的字数。如果某一段明显超出预估，可以立即进行调整，而不是等到全文完成后再进行大幅删改。这种"小步快跑"的方式不仅有助于控制字数，还能让你保持清晰的思路。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">删减冗余的技巧</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">当字数超标时，删减并不意味着简单地删掉几句话。以下是几个有效的精简策略：第一，删除重复表达——同一观点用不同措辞说两遍是常见的冗余；第二，去掉无意义的修饰词，如"非常"、"极其"、"十分"等，除非它们确实改变了语义；第三，将长句拆为短句，去除冗余的连接词和过渡语；第四，审视每个段落是否都在推进论点，如果某段内容偏离主线，果断删去或移至附录。善用字数统计工具，删除前后对比字数变化，直观感受精简的效果。</p>
+        </div>
+
+        <!-- 字数统计的技术实现原理 -->
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">字数统计的技术实现原理</h2>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">字数统计看似简单，实际上涉及不少细节处理。理解其背后的技术原理，有助于你选择合适的工具，也能帮助你判断统计结果的准确性。下面以 JavaScript 为例，介绍核心的实现逻辑。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">区分中英文字符</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">中文字符和英文字符可以通过 Unicode 编码范围来区分。中文汉字主要分布在 <code>\u4e00-\u9fff</code>（基本汉字）和 <code>\u3400-\u4dbf</code>（扩展 A 区）等区间。通过正则表达式 <code>/[\u4e00-\u9fff]/</code> 即可匹配常见汉字。英文字母则用 <code>/[a-zA-Z]/</code> 匹配。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">混合文本的字数统计通常采用如下策略：先统计中文字符数量（每个汉字算一字），再对非中文部分按空格分词统计英文单词数。实现代码示例如下：</p>
+          <pre style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:16px;font-size:13px;color:#334155;overflow-x:auto;line-height:1.6;margin:12px 0;"><code>// 统计中文字符数（每个汉字算一个字）
+var chineseChars = text.match(/[\u4e00-\u9fff]/g);
+var chineseCount = chineseChars ? chineseChars.length : 0;
+
+// 统计英文单词数（按空格分词，排除空串）
+var englishWords = text.replace(/[\u4e00-\u9fff]/g, '')
+                       .match(/[a-zA-Z0-9]+/g);
+var englishCount = englishWords ? englishWords.length : 0;
+
+// 总字数 = 中文字数 + 英文单词数
+var totalWords = chineseCount + englishCount;</code></pre>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">空格与字符数处理</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">字符数统计最简单，直接取字符串的 <code>length</code> 属性即可，它返回的是 UTF-16 编码单元的数量。不含空格的字符数则需要在统计前过滤掉所有空格和换行符：<code>text.replace(/\s/g, '').length</code>。这里的 <code>\s</code> 匹配所有空白字符，包括普通空格、制表符、换行符等。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">行数与段落的判断逻辑</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">行数的统计通常以换行符 <code>\n</code> 为分割依据。需要注意的是，如果文本末尾没有换行符，最后一行虽然也是一行，但不会被 <code>\n</code> 分割出来。因此，正确的行数计算方式为：如果文本为空则为 0 行，否则行数等于换行符数量加 1。代码为：<code>text ? text.split('\n').length : 0</code>。</p>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">段落数的判断略有不同。段落通常以一个或多个连续空行（即只包含空白字符的行）为分隔。实现时可以先按换行符分割为行数组，过滤掉只含空白字符的空行，然后对剩余的非空行进行分组——连续的非空行归为同一段落。实际代码通常使用 <code>text.split(/\n\s*\n/)</code> 按空行分割，再过滤掉空结果。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">字节数计算</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">字节数取决于文本的编码方式。在 UTF-8 编码下，英文字母和数字占 1 个字节，中文汉字通常占 3 个字节。JavaScript 中可以使用 <code>new Blob([text]).size</code> 获取 UTF-8 编码的字节数，这是浏览器环境下最简单可靠的方式。</p>
+        </div>
+
+        <!-- 常见问题 -->
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">常见问题</h2>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">标点符号算字数吗？</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">这取决于具体的统计标准。在本工具的"字数"统计中，中文标点不计入字数，因为字数统计的是汉字和英文单词的数量。但在"字符数"统计中，标点符号会被计入，因为字符数统计的是文本中所有可见字符的总数。如果你需要精确了解哪些符号被包含，可以对比"字数"和"字符数"两个指标的差异。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">空格算字数吗？</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">在"字数"统计中，空格本身不算字数——空格只是用来分隔英文单词的边界符。在"字符数"统计中，空格会被计入。如果你想查看不含任何空白字符的字符总数，可以参考"不含空格字符数"这一指标。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">中英文混排怎么算？</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">本工具采用中英文分别计算再相加的方式：所有汉字各算一个字，英文部分按空格分词后每个单词算一个字。例如"我今天学了 3 个 new words"会被统计为：中文字"我、今、天、学、了"共 5 字 + 英文单词"3、个、new、words"共 4 字 = 总计 9 字（注意"个"是汉字）。这种方式对中英混排文本给出了相对合理的字数估计。</p>
+
+          <h3 style="font-size:16px;margin:20px 0 10px;color:#1e293b;">为什么和 Microsoft Word 统计结果不一样？</h3>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:10px;">Microsoft Word 的字数统计引擎经过了高度定制，对连字符单词、缩写、URL、邮箱地址等有特殊处理规则，而且其中文分词可能基于更复杂的词典而非简单的 Unicode 范围匹配。此外，Word 在统计"字数"时是否计入标点、数字、英文缩写等，也与在线工具存在差异。因此，两个工具的结果存在少量偏差是完全正常的。如果你需要与 Word 的统计结果对齐，建议以 Word 的结果为准，或查阅目标提交方的具体统计规则。</p>
+        </div>
+
+        <!-- 使用方法 -->
+        <div style="margin-top:30px;">
+          <h2 style="font-size:18px;margin-bottom:12px;color:#1e293b;">工具使用方法</h2>
+          <ul style="color:#475569;font-size:14px;line-height:1.8;padding-left:20px;">
+            <li>在上方文本框中直接输入或粘贴需要统计的文本内容</li>
+            <li>工具会在你输入的同时自动实时更新六项统计数据：字数、字符数、不含空格字符数、行数、段落数、字节数</li>
+            <li>点击"清空"按钮可以快速清空文本框和所有统计数据</li>
+            <li>点击"复制文本"按钮可以一键将文本框中的内容复制到剪贴板</li>
+          </ul>
+          <p style="color:#475569;font-size:14px;line-height:1.7;margin-top:10px;">所有统计计算均在您的浏览器本地完成，文本内容不会上传到任何服务器，请放心使用。希望本工具和这篇指南能帮助你更好地掌握字数统计的规范，在各种写作场景中游刃有余。</p>
+        </div>
+
+      </div>
       <aside class="tool-sidebar">
-        <div class="ads-container ads-sidebar">广告位预留</div>
-        <div class="ads-container ads-sidebar">广告位预留</div>
+        <div class="ads-container ads-sidebar">
+          广告位预留<br>（AdSense 审核通过后可放置侧边栏广告）
+        </div>
+        <div class="ads-container ads-sidebar">
+          广告位预留
+        </div>
       </aside>
     </div>
   </main>
@@ -95,41 +253,64 @@
       <div class="footer-links">
         <a href="about.html">关于我们</a>
         <a href="privacy.html">隐私政策</a>
+        <a href="terms.html">服务条款</a>
         <a href="index.html">网站首页</a>
       </div>
     </div>
   </footer>
 
   <script>
-    function countText() {
-      const text = document.getElementById('textInput').value;
-      const chars = text.length;
-      const charsNoSpace = text.replace(/\s/g, '').length;
-      const lines = text.length > 0 ? text.split(/\r?\n/).length : 0;
-      const paragraphs = text.length > 0 ? text.split(/\n\s*\n/).filter(p => p.trim()).length : 0;
-      const bytes = new Blob([text]).size;
-      const words = text.trim().length > 0 ? text.trim().split(/\s+/).length : 0;
+    function updateStats() {
+      var text = document.getElementById('textInput').value;
 
-      document.getElementById('charCount').textContent = chars;
-      document.getElementById('charNoSpace').textContent = charsNoSpace;
-      document.getElementById('lineCount').textContent = lines;
-      document.getElementById('paragraphCount').textContent = paragraphs;
-      document.getElementById('byteCount').textContent = bytes;
-      document.getElementById('wordCount').textContent = words;
+      // 字数：中文字符 + 英文单词
+      var chineseChars = text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g);
+      var chineseCount = chineseChars ? chineseChars.length : 0;
+
+      var englishWords = text.replace(/[\u4e00-\u9fff\u3400-\u4dbf]/g, ' ')
+                             .match(/[a-zA-Z0-9]+/g);
+      var englishCount = englishWords ? englishWords.length : 0;
+
+      var wordCount = chineseCount + englishCount;
+
+      // 字符数（含空格）
+      var charCount = text.length;
+
+      // 不含空格字符数
+      var charNoSpaceCount = text.replace(/\s/g, '').length;
+
+      // 行数
+      var lineCount = text === '' ? 0 : text.split('\n').length;
+
+      // 段落数：按空行分割，过滤空结果
+      var paragraphs = text.split(/\n\s*\n/).filter(function(p) {
+        return p.trim().length > 0;
+      });
+      var paraCount = text.trim() === '' ? 0 : paragraphs.length;
+
+      // 字节数（UTF-8）
+      var byteCount = new Blob([text]).size;
+
+      document.getElementById('wordCount').textContent = wordCount;
+      document.getElementById('charCount').textContent = charCount;
+      document.getElementById('charNoSpaceCount').textContent = charNoSpaceCount;
+      document.getElementById('lineCount').textContent = lineCount;
+      document.getElementById('paraCount').textContent = paraCount;
+      document.getElementById('byteCount').textContent = byteCount;
     }
 
     function clearText() {
       document.getElementById('textInput').value = '';
-      countText();
+      updateStats();
     }
 
     function copyText() {
-      const text = document.getElementById('textInput').value;
+      var text = document.getElementById('textInput').value;
       if (!text) return;
-      navigator.clipboard.writeText(text).then(() => { alert('文本已复制'); });
+      navigator.clipboard.writeText(text).then(function() {
+        alert('已复制到剪贴板');
+      });
     }
-
-    countText();
   </script>
 </body>
 </html>
