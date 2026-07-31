@@ -8,6 +8,17 @@
   <url><loc>https://www.qiushanzoudaokou.top/password-generator.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.qiushanzoudaokou.top/timestamp-converter.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.qiushanzoudaokou.top/word-counter.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/developer-online-tools.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/json-vs-xml.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/secure-password-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/json-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/base64-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/qr-code-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/url-encoding-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/password-security-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/timestamp-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.qiushanzoudaokou.top/blog/word-count-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.qiushanzoudaokou.top/about.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://www.qiushanzoudaokou.top/privacy.html</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://www.qiushanzoudaokou.top/terms.html</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
